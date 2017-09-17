@@ -1,0 +1,19 @@
+/*
+//= require font-awesome
+*/
+
+// Graphical variables
+@import "config/index";
+
+// External libraries
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "vendor/index";
+@import "normalize/normalize";
+
+// Your CSS
+@import "layout/index";
+@import "components/index";
+@import "pages/index";
