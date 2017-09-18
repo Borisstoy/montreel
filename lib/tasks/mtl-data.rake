@@ -3,7 +3,7 @@ namespace :mtl_data do
   task import_mtl_data: :environment do
     require 'csv'
 
-    puts "Dumping & Reseting Place table IDs"
+    puts "Dumping & Reseting Places table IDs"
 
     ActiveRecord::Base.connection.reset_pk_sequence!('places')
 
@@ -12,7 +12,6 @@ namespace :mtl_data do
     csv = Dir["db/data/*"].first
 
     CSV.foreach(csv, headers: true ) do |row|
-
 
       pl = Place.new
       pl.borough = row[0]
@@ -29,6 +28,8 @@ namespace :mtl_data do
       pl.description = row[11]
       pl.save
     end
+
+    puts "Import done"
   end
 end
 
