@@ -79,6 +79,7 @@ GEM
       railties (>= 3.2, < 5.2)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
+    geocoder (1.4.4)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.4)
@@ -149,7 +150,6 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
-    redcarpet (3.4.0)
     redis (3.3.3)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
@@ -211,6 +211,7 @@ DEPENDENCIES
   figaro
   font-awesome-rails
   font-awesome-sass
+  geocoder
   i18n
   jbuilder (~> 2.0)
   jquery-rails
@@ -221,7 +222,6 @@ DEPENDENCIES
   pry-rails
   puma
   rails (= 5.1.0)
-  redcarpet (~> 3.3, >= 3.3.4)
   redis
   sass-rails
   simple_form
