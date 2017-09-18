@@ -4,6 +4,7 @@
       // GMAPS API V3
       var markersData = <%= raw @places_markers.to_json %>;
       var markers = [];
+
       function createMarker (latlng, markerInfowindow, icon) {
         var marker = new google.maps.Marker({
           map: map,
@@ -11,6 +12,7 @@
           icon: icon
         });
         markers.push(marker);
+
         google.maps.event.addListener(marker, 'click', function() {
           //infowindow content
           var iwContent = markerInfowindow;
@@ -28,6 +30,7 @@
 
         for (var i = 0; i < markersData.length; i++){
           var latlng = new google.maps.LatLng(markersData[i].place_lat, markersData[i].place_lng);
+
           var markerInfowindow = markersData[i].infowindow;
           var icon = {
               path: "M4.415,8.829c2.432,0,4.415-1.983,4.415-4.415 C8.829,1.983,6.846,0,4.415,0S0,1.983,0,4.415C0,6.846,1.983,8.829,4.415,8.829z",
@@ -82,8 +85,8 @@
       var lng;
       //create the associated event listener for newLocation and zoom of the map
       $('.places').on('click', function() {
-        var lat = $(this).data('latitude')
-        var lng = $(this).data('longitude')
+        var lat = $(this).data('lat')
+        var lng = $(this).data('lng')
         newLocation(lat, lng);
       })
     });
