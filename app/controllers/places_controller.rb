@@ -16,6 +16,6 @@ class PlacesController < ApplicationController
   private
 
   def find_places
-    Place.all
+    @filtered_places = Place.all
   end
 end

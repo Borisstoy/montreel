@@ -1,6 +1,6 @@
 module GeocoderHelper
   def center_map(collection)
-    location = params ? params : "Montreal, QC"
+    location = "Montreal, QC"
     within_area(collection, geocoder(location))
   end
 
@@ -10,7 +10,7 @@ module GeocoderHelper
 
   def geocoder(location)
     center = Geocoder.search(location)
-    bounds = center.first.geometry['bounds'] || Geocoder.search("Québec, QC, Canada").first.geometry['bounds']
+    bounds = center.first.geometry['bounds'] || Geocoder.search("Montreal, QC, Canada").first.geometry['bounds']
     box = [
       bounds['southwest']['lat'],
       bounds['southwest']['lng'],
