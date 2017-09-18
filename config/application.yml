@@ -9,3 +9,7 @@
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+GOOGLE_API_SERVER_KEY: "AIzaSyAGO-SnCOW9q9Eg47eaNn4KwOhoMpwSTdc"
+GOOGLE_API_BROWSER_KEY: "AIzaSyBHqi9MEqrP2ncl7qD4bSm5sVIAhzPY-TE"
+
