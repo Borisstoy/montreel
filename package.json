@@ -1,5 +1,14 @@
 {
   "name": "mtl-culture",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "browserify": "~> 13.0.0",
+    "browserify-incremental": "~> 3.0.1",
+    "coffeeify": "~> 0.6",
+    "snazzy-info-window": "^1.1.0"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "~> 5.0.0"
+  }
 }

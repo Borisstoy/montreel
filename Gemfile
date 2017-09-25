@@ -22,6 +22,8 @@ gem 'autoprefixer-rails'
 gem "font-awesome-rails"
 gem 'slim-rails', '~> 3.1', '>= 3.1.1'
 
+gem 'browserify-rails' # enable node modules export
+
 # localisation
 gem 'i18n'
 
