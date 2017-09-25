@@ -38,7 +38,7 @@ namespace :mtl_data do
       pl.save
     end
 
-    puts "Import library done"
+    puts "Import libraries done"
   end
 
   task import_monuments: :environment do
