@@ -1,9 +1,24 @@
 <% content_for(:places_map) do %>
   <script>
     $(document).ready(function() {
-      // GMAPS API V3
+
       var markersData = <%= raw @places_markers.to_json %>;
       var markers = [];
+      var icon = {
+        path: "M4.415,8.829c2.432,0,4.415-1.983,4.415-4.415 C8.829,1.983,6.846,0,4.415,0S0,1.983,0,4.415C0,6.846,1.983,8.829,4.415,8.829z",
+        fillColor: '#2962FF',
+        fillOpacity: 1,
+        anchor: new google.maps.Point(0,0),
+        strokeWeight: 1,
+        scale: 2
+      }
+      var mapOptions = {
+        zoom: 9,
+        minZoom:3,
+        maxZoom: 18,
+        mapTypeId: 'roadmap',
+        styles: [ { "featureType": "road", "elementType": "geometry", "stylers": [ { "lightness": 100 }, { "visibility": "simplified" } ] }, { "featureType": "water", "elementType": "geometry", "stylers": [ { "visibility": "on" }, { "color": "#C6E2FF" } ] }, { "featureType": "poi", "elementType": "geometry.fill", "stylers": [ { "color": "#C5E3BF" } ] }, { "featureType": "road", "elementType": "geometry.fill", "stylers": [ { "color": "#D1D1B8" } ] } ]
+      };
 
       function createMarker (latlng, markerInfowindow, icon) {
         var marker = new google.maps.Marker({
@@ -12,67 +27,45 @@
           icon: icon
         });
         markers.push(marker);
-
         google.maps.event.addListener(marker, 'click', function() {
-          //infowindow content
+
           var iwContent = markerInfowindow;
-          // including content to the infowindow
-          infoWindow.setContent(iwContent);
-          // opening the infowindow in the current map and at the current marker location
+
+          infoWindow = new SnazzyInfoWindow({
+            marker: marker,
+            content: iwContent
+          });
+
           infoWindow.open(map, marker);
         });
       }
-      // creating markers with createMarker function
+
       function displayMarkers(markersData){
-        // this variable sets the map bounds and zoom level according to markers position
         var bounds = new google.maps.LatLngBounds();
         var places_coordinates = [];
-
         for (var i = 0; i < markersData.length; i++){
           var latlng = new google.maps.LatLng(markersData[i].place_lat, markersData[i].place_lng);
-
           var markerInfowindow = markersData[i].infowindow;
-          var icon = {
-              path: "M4.415,8.829c2.432,0,4.415-1.983,4.415-4.415 C8.829,1.983,6.846,0,4.415,0S0,1.983,0,4.415C0,6.846,1.983,8.829,4.415,8.829z",
-              fillColor: '#2962FF',
-              fillOpacity: 1,
-              anchor: new google.maps.Point(0,0),
-              strokeWeight: 1,
-              scale: 2
-          }
+
           places_coordinates.push(latlng);
           createMarker(latlng, markerInfowindow, icon);
-
-          // Marker’s Lat. and Lng. values are added to bounds variable
           bounds.extend(latlng);
         }
         var markerCluster = new MarkerClusterer(map, markers);
-        // the bounds variable is used to set the map bounds with API’s fitBounds() function
         map.fitBounds(bounds);
       }
 
       function initialize() {
-        var mapOptions = {
-          zoom: 9,
-          minZoom:3,
-          maxZoom: 18,
-          mapTypeId: 'roadmap',
-          styles: [ { "featureType": "road", "elementType": "geometry", "stylers": [ { "lightness": 100 }, { "visibility": "simplified" } ] }, { "featureType": "water", "elementType": "geometry", "stylers": [ { "visibility": "on" }, { "color": "#C6E2FF" } ] }, { "featureType": "poi", "elementType": "geometry.fill", "stylers": [ { "color": "#C5E3BF" } ] }, { "featureType": "road", "elementType": "geometry.fill", "stylers": [ { "color": "#D1D1B8" } ] } ]
-        };
         map = new google.maps.Map(document.getElementById('places-map'), mapOptions);
-        // a new Info Window is created
-        infoWindow = new google.maps.InfoWindow();
-        // Event that closes the InfoWindow with a click on the map
+
         google.maps.event.addListener(map, 'click', function() {
           infoWindow.close();
         });
-        // displayMarkers() function is called for markers creation
+
         displayMarkers(markersData);
       }
       initialize();
-      // google.maps.event.addDomListener(window, 'load', initialize);
 
-      //function to reposition the map
       function newLocation(newLat,newLng) {
         map.setCenter({
           lat : newLat,
@@ -83,7 +76,7 @@
 
       var lat;
       var lng;
-      //create the associated event listener for newLocation and zoom of the map
+
       $('.places').on('click', function() {
         var lat = $(this).data('lat')
         var lng = $(this).data('lng')
