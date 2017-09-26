@@ -35,7 +35,7 @@ module GeocoderHelper
       marker[:place_lat] = place.lat
       marker[:place_lng] = place.lng
       marker[:infowindow] = render_to_string(
-                                partial: "infowindow.html.erb",
+                                partial: "infowindow.html.slim",
                                 formats: [:html],
                                 layout: false,
                                 locals: {place: place},
