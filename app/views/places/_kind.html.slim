@@ -1,0 +1,4 @@
+- places.each do |place|
+  .places data-latitude="#{place.lat}" data-longitude="#{place.lng}"
+    = place.name.downcase.capitalize
+    br

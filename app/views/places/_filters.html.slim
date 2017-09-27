@@ -1,0 +1,5 @@
+#places-kind-filters
+  - kinds_collection.each do |label, kind|
+    = link_to "#{label}", "#", id: "#{kind}", class: "filter-button", method: :post, remote: true
+    br
+

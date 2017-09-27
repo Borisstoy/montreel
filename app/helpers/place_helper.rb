@@ -17,4 +17,21 @@ module PlaceHelper
       t('no_description')
     end
   end
+
+  def kinds_collection
+    {
+      "Centre communautaire": "Centre communautaire",
+       "Monument": "Monument",
+       "Cinéma, Théâtre": "Cinéma,Théâtre",
+       "Théâtre": "Théâtre",
+       "Centre des loisirs": "Centre des loisirs",
+       "Cinéma": "Cinéma",
+       "Bibliothèque, Centre communautaire, Salle de spectacle": "Bibliothèque,Centre communautaire,Salle de spectacle",
+       "Salle de spectacle, Musée municipal": "Salle de spectacle,Musée municipal",
+       "Musée municipal": "Musée municipal",
+       "Bibliothèque": "Bibliothèque",
+       "Salle de spectacle": "Salle de spectacle",
+       "Église": "Église",
+    }
+  end
 end
