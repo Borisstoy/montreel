@@ -1,5 +1,5 @@
 {
-  "name": "mtl-culture",
+  "name": "montreel",
   "private": true,
   "dependencies": {
     "browserify": "~> 13.0.0",
