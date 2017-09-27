@@ -1,5 +1,6 @@
 #places-kind-filters
   - kinds_collection.each do |label, kind|
-    = link_to "#{label}", {controller: 'places', action: 'filters'}, id: "#{kind}", class: "filter-button", method: :post, remote: true
+    .filter-button data={ 'remote-url' => places_filters_path, 'id' =>  "#{kind}"}
+      = "#{label}"
     br
 

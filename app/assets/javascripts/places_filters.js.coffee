@@ -1,8 +1,10 @@
 $ ->
   $('.filter-button').on 'click', ->
-    place_kind = $(@).attr('id')
+    place_kind = $(@).attr('data-id')
+    remote_url = $(@).data('remote-url')
+    console.log remote_url
     $.ajax
-      url: '/places/filters'
+      url: remote_url
       method: 'POST'
       data: kind: place_kind
       console.log place_kind
