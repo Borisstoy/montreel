@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
   def index
     center_map(Place)
     places_markers
-    # filters
+    filters
   end
 
   def show
@@ -18,14 +18,14 @@ class PlacesController < ApplicationController
     display_places_markers(@filtered_places)
   end
 
-  # def filters
-  #   places_kind = params[:kind] if params[:kind].present?
-  #   @places_by_kind = Place.where(kind: places_kind)
-  #   respond_to do |format|
-  #     format.js
-  #     format.html
-  #   end
-  # end
+  def filters
+    places_kind = params[:kind] if params[:kind].present?
+    @places_by_kind = Place.where(kind: places_kind)
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
 
   private
 
