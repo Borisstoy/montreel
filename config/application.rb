@@ -29,7 +29,8 @@ module RocketMvp
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.browserify_rails.commandline_options = '-t coffeeify --extension=".js"'
+    config.browserify_rails.commandline_options = '-t coffeeify --extension=".js.coffee"'
+    config.assets.paths << Rails.root.join('node_modules', 'snazzy-info-window', 'dist')
     config.i18n.default_locale = :fr
     # Don't generate system test files.
     config.generators.system_tests = nil
