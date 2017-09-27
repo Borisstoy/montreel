@@ -1,5 +1,8 @@
 .iw-content-wrapper
   h4.iw-title
     = place.name
+  .iw-contact-info
+    span= place_contact(place)
+
   p.iw-desc
-    = place.description
+    = places_description(place.description)
