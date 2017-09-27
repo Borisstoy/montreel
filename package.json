@@ -10,8 +10,5 @@
   "license": "MIT",
   "engines": {
     "node": "~> 5.0.0"
-  },
-  "scripts": {
-    "heroku-postbuild": "npm install"
-  },
+  }
 }
