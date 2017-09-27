@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
-    title MTL-Culture
+    title Montreel
     = csrf_meta_tags
     = action_cable_meta_tag
 
@@ -13,7 +13,7 @@ html
     = stylesheet_link_tag    'application', media: 'all'
 
   body
-    = render 'shared/navbar'
+    = render 'navmap' if controller_name == 'places'
     = render 'shared/flashes'
     = yield
     = render "shared/analytics"
