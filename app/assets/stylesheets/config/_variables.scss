@@ -2,12 +2,15 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
 $base-font: "Open Sans", "Helvetica", "sans-serif";
 $header-font: "Raleway", "Helvetica", "sans-serif";
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Open Sans'!important;
+  font-family: 'Raleway'!important;
+}
+
+span, a, p {
+  font-family: $base-font!important;
 }
 
 // Local fonts (uncomment following lines)
