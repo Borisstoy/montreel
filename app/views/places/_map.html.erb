@@ -31,7 +31,8 @@
           var iwContent = markerInfowindow;
           infoWindow = new SnazzyInfoWindow({
             marker: marker,
-            content: iwContent
+            content: iwContent,
+            closeWhenOthersOpen: true
           });
           infoWindow.open();
         });
