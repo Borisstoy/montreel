@@ -27,13 +27,16 @@
           icon: icon
         });
         markers.push(marker);
-        google.maps.event.addListener(marker, 'mouseover', function() {
+
+        google.maps.event.addListener(marker, 'click', function() {
+
           var iwContent = markerInfowindow;
+
           infoWindow = new SnazzyInfoWindow({
             marker: marker,
             content: iwContent
           });
-          infoWindow.open();
+          infoWindow.open(map, marker);
         });
       }
 
