@@ -16,18 +16,16 @@ namespace :mtl_data do
 
   task import_cult_places: :environment do
     require 'csv'
-    puts "Parsing CSV"
+    puts "Parsing libraries"
 
-    csv = Dir["db/data/*"][0]
-
-    CSV.foreach(csv, headers: true ) do |row|
+    CSV.foreach("db/data/libraries.csv", headers: true ) do |row|
 
       pl = Place.new
       pl.borough      = row[0]
       pl.kind         = row[1]
       pl.name         = row[2]
       pl.address      = row[3]
-      pl.zip          = row [4]
+      pl.zip          = row[4]
       pl.city         = row[5]
       pl.province     = row[6]
       pl.phone        = row[7]
@@ -42,15 +40,15 @@ namespace :mtl_data do
   end
 
   task import_monuments: :environment do
+    require 'csv'
+    puts "Parsing monuments"
 
-    csv = Dir["db/data/*"][1]
-
-    CSV.foreach(csv, headers: true ) do |row|
+    CSV.foreach("db/data/monuments.csv", headers: true ) do |row|
 
       pl = Place.new
       pl.kind          = 'Monument'
       pl.name          = row[1]
-      pl.lng           = row [4]
+      pl.lng           = row[4]
       pl.lat           = row[5]
       pl.save
     end
