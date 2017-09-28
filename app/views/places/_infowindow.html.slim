@@ -1,4 +1,5 @@
-.iw-content-wrapper place-kind="#{place.kind}"
+.iw-content-wrapper data={'place_kind' => "#{place.kind}",
+                          'id' => "#{place.id}"}
   h4.iw-title
     = place.name
   .iw-contact-info
