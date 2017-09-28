@@ -1,4 +1,5 @@
 - places.each do |place|
   .places data-latitude="#{place.lat}" data-longitude="#{place.lng}"
-    = place.name.downcase.capitalize
-    br
+    h5= place.name.downcase.capitalize
+    - if place.description.present?
+      p= place.description.truncate(250, omission: '...')
