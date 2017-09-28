@@ -1,5 +1,6 @@
 #places-kind-filters
-  - kinds_collection.each do |label, kind|
-    .filter-button data={ 'remote-url' => places_filters_path, 'id' =>  "#{kind}"}
-      = "#{label}"
+  - kinds_collection.each do |kind, label|
+    .filter-button data={ 'remote-url' => places_filters_path,
+                          'kind' =>  "#{kind}"}
+      a= "#{label}"
 

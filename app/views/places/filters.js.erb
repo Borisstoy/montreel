@@ -1,7 +1,7 @@
 $("#filter-results").html("<%= escape_javascript(render partial: 'kind', locals: { places: @places_by_kind } ) %>");
 
 $(document).ready(function() {
-  console.log('Initializaing  map recenter on place click')
+  console.log('Initializaing map recenter on place click')
   function newLocation(newLat,newLng) {
     map.setCenter({
       lat : newLat,
@@ -18,5 +18,13 @@ $(document).ready(function() {
     var lng = parseFloat($(this).attr('data-longitude'))
 
     newLocation(lat, lng);
+
+    var place_id, remote_url;
+      place_id = $(this).attr('data-id');
+
+      var map = document.getElementById('places-map')
+      var markersData = gon.markers;
+
+      console.log(markersData)
   })
 });

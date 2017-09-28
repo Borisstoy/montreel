@@ -1,5 +1,15 @@
+#results-header
+  .circle class="#{kind_header_color(places.first.kind)}"
+
+  h5
+    = places_results_header(places.first.kind)
+
+
 - places.each do |place|
-  .places data-latitude="#{place.lat}" data-longitude="#{place.lng}"
+  .places data={'latitude' =>  "#{place.lat}",
+                'longitude' =>  "#{place.lng}",
+                'id' => "place_#{place.id}"}
+
     h5= place.name.downcase.capitalize
     - if place.description.present?
       p= place.description.truncate(250, omission: '...')
