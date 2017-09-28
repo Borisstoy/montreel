@@ -1,1 +1,22 @@
 $("#filter-results").html("<%= escape_javascript(render partial: 'kind', locals: { places: @places_by_kind } ) %>");
+
+$(document).ready(function() {
+  console.log('Initializaing map recenter on place click')
+  function newLocation(newLat,newLng) {
+    map.setCenter({
+      lat : newLat,
+      lng : newLng
+    });
+    map.setZoom(15);
+  }
+
+  var lat;
+  var lng;
+
+  $('.places').on('click', function() {
+    var lat = parseFloat($(this).attr('data-latitude'))
+    var lng = parseFloat($(this).attr('data-longitude'))
+
+    newLocation(lat, lng);
+  })
+});

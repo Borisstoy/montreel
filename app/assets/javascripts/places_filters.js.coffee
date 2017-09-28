@@ -7,7 +7,6 @@ $ ->
       url: remote_url
       method: 'POST'
       data: kind: place_kind
-      console.log place_kind
       success:(data) ->
       error:(data) ->
         return false

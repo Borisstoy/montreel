@@ -61,24 +61,6 @@
         displayMarkers(markersData);
       }
       initialize();
-
-      function newLocation(newLat,newLng) {
-        map.setCenter({
-          lat : newLat,
-          lng : newLng
-        });
-        map.setZoom(15);
-      }
-
-      var lat;
-      var lng;
-
-      $('.places').on('click', function() {
-        var lat = $(this).data('lat')
-        var lng = $(this).data('lng')
-
-        newLocation(lat, lng);
-      })
     });
   </script>
 <% end %>
