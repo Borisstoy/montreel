@@ -1,7 +1,7 @@
 $("#filter-results").html("<%= escape_javascript(render partial: 'kind', locals: { places: @places_by_kind } ) %>");
 
 $(document).ready(function() {
-  console.log('Initializaing map recenter on place click')
+  console.log('Initializaing  map recenter on place click')
   function newLocation(newLat,newLng) {
     map.setCenter({
       lat : newLat,

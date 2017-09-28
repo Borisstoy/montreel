@@ -50,7 +50,6 @@
           createMarker(latlng, markerInfowindow, icon);
           bounds.extend(latlng);
         }
-        var markerCluster = new MarkerClusterer(map, markers);
         map.fitBounds(bounds);
       }
 
