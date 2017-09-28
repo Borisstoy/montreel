@@ -1,3 +1,7 @@
+.active-filter-button
+    a
+        color: #fff!important
+
 #navmap
     float: left
     width: 12%
@@ -5,16 +9,25 @@
     background: $dark
 
     #places-kind-filters
-        padding: 1.4em
 
         .filter-button
-            font-size: .8em
-            color: lighten($dark, 55%)
-            margin-bottom: 7%
-            cursor: pointer
+            padding: .5em 1.4em
+            line-height: 1em
 
-            &:hover
-                color: #fff
+            &:first-child
+                padding-top: 1em
+
+            a
+
+                font-size: .74em
+                color: lighten($dark, 60%)
+                cursor: pointer
+                font-weight: 700
+                text-decoration: none
+
+                &:hover, &:active
+                    color: #fff
+                    text-decoration: none
 
 #filter-results
     width: 25%
@@ -27,6 +40,7 @@
     .places
         padding: 1.4em
         border-bottom: 1px solid lighten($dark, 91%)
+        cursor: pointer
 
         &:hover
             background: lighten($dark, 97%)
@@ -41,3 +55,66 @@
         p
             font-size: .8em
             margin-bottom: 0
+
+        &:first-child
+            margin-top: 60px
+
+#results-header
+    padding: 0 1.4em
+    height: 60px
+    +flexbox
+    +alignitems-center
+    background: #fff
+
+    .circle
+        margin-right: 3%
+        height: 100%
+        +flexbox
+        +alignitems-center
+
+    h5
+        font-weight: 700
+        margin: 0
+        width: 100%
+
+.sticky-results-header
+    position: absolute
+    overflow: hidden
+    width: 24.77%
+
+// results filters conditionnal display
+
+=header-circle($color)
+    &:before
+        color: $color
+        font-family: FontAwesome
+        content: '\f111'
+        font-size: 1.2em
+
+.com_centers
+    +header-circle($com_centers)
+.monuments
+    +header-circle($monuments)
+.cin_the
+    +header-circle($cin_the)
+.the
+    +header-circle($the)
+.hobby_cent
+    +header-circle($hobby_cent)
+.cin
+    +header-circle($cin)
+.lib_com_spe
+    +header-circle($lib_com_spe)
+.spe_mus
+    +header-circle($spe_mus)
+.mus
+    +header-circle($mus)
+.lib
+    +header-circle($lib)
+.spe
+    +header-circle($spe)
+.church
+    +header-circle($church)
+
+//
+
