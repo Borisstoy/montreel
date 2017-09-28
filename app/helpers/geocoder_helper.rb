@@ -32,6 +32,7 @@ module GeocoderHelper
 
       marker = {}
 
+      marker[:id] = "place_#{place.id}"
       marker[:place_lat] = place.lat
       marker[:place_lng] = place.lng
       marker[:infowindow] = render_to_string(
