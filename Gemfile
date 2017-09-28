@@ -27,6 +27,9 @@ gem 'browserify-rails' # enable node modules export
 # localisation
 gem 'i18n'
 
+# send variables in JS
+gem 'gon'
+
 # geocoding
 gem "geocoder"
 
