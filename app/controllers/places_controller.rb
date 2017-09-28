@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :filters ]
+  skip_before_action :authenticate_user!, only: [ :index, :filters, :fetch_place_data ]
   before_action :set_places, only: [:show]
 
   include GeocoderHelper
@@ -8,6 +8,10 @@ class PlacesController < ApplicationController
     center_map(Place)
     places_markers
     filters
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def show
@@ -25,6 +29,10 @@ class PlacesController < ApplicationController
       format.js
       format.html
     end
+    gon.markers = @places_markers
+  end
+
+  def markers
   end
 
   private
