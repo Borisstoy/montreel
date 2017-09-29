@@ -23,6 +23,7 @@
         });
         markers.push(marker);
 
+        // open IW
         google.maps.event.addListener(marker, 'mouseover', function() {
           var iwContent = markerInfowindow;
           infoWindow = new SnazzyInfoWindow({
@@ -33,6 +34,7 @@
           infoWindow.open();
         });
 
+        // remotely load results list on marker click
         google.maps.event.addListener(marker, 'click', function() {
           return $.ajax({
             url: 'places/filters',

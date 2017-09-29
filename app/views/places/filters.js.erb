@@ -23,6 +23,7 @@ $(document).ready(function() {
     var place_id = $(this).attr('data-id');
     var markersData = gon.markers;
 
+    // match GMAP marker with place clicked id
     function findMarker(markersData) {
       return markersData.find(m => m.id === place_id);
     }
