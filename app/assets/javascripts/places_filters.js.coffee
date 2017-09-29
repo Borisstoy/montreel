@@ -9,4 +9,4 @@ $ ->
       data: kind: place_kind
       success:(data) ->
       error:(data) ->
-        return false
+        console.log 'ajax failed'

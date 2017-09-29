@@ -28,9 +28,11 @@ $(document).ready(function() {
     }
 
     function openInfowWindow() {
-      var matchedMarker = findMarker(markersData);
-      var latlng = new google.maps.LatLng(matchedMarker.place_lat, matchedMarker.place_lng);
-      var markerInfowindow = matchedMarker.infowindow
+      var matchedMarker, latlng, markerInfowindow;
+
+      matchedMarker    = findMarker(markersData);
+      latlng           = new google.maps.LatLng(matchedMarker.place_lat, matchedMarker.place_lng);
+      markerInfowindow = matchedMarker.infowindow
 
       var marker = new google.maps.Marker({
         map: map,
