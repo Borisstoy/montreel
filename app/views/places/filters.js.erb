@@ -14,17 +14,50 @@ $(document).ready(function() {
   var lng;
 
   $('.places').on('click', function() {
+    // recenter map on place click
     var lat = parseFloat($(this).attr('data-latitude'))
     var lng = parseFloat($(this).attr('data-longitude'))
-
     newLocation(lat, lng);
 
-    var place_id, remote_url;
-      place_id = $(this).attr('data-id');
+    // open IW on place click
+    var place_id = $(this).attr('data-id');
+    var markersData = gon.markers;
 
-      var map = document.getElementById('places-map')
-      var markersData = gon.markers;
+    function findMarker(markersData) {
+      return markersData.find(m => m.id === place_id);
+    }
 
-      console.log(markersData)
+    function openInfowWindow() {
+      var matchedMarker = findMarker(markersData);
+      var latlng = new google.maps.LatLng(matchedMarker.place_lat, matchedMarker.place_lng);
+      var markerInfowindow = matchedMarker.infowindow
+
+      var marker = new google.maps.Marker({
+        map: map,
+        position: latlng,
+        icon: icon
+      });
+
+      var iwContent = markerInfowindow;
+
+      infoWindow = new SnazzyInfoWindow({
+        marker: marker,
+        content: iwContent,
+        closeWhenOthersOpen: true
+      });
+      infoWindow.open();
+    }
+
+    var icon = {
+      path: "M4.415,8.829c2.432,0,4.415-1.983,4.415-4.415 C8.829,1.983,6.846,0,4.415,0S0,1.983,0,4.415C0,6.846,1.983,8.829,4.415,8.829z",
+      fillColor: '#fff',
+      fillOpacity: 1,
+      anchor: new google.maps.Point(0,0),
+      strokeWeight: 0,
+      scale: 2
+    }
+
+    openInfowWindow();
+
   })
 });

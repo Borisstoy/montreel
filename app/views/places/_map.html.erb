@@ -3,6 +3,7 @@
     $(document).ready(function() {
 
       var markersData = <%= raw @places_markers.to_json %>;
+      // for clusters
       var markers = [];
 
       var mcOptions = {
