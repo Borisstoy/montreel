@@ -11,5 +11,7 @@
                 'id' => "place_#{place.id}"}
 
     h5= place.name.downcase.capitalize
+    p class='borough'
+      = place.borough
     - if place.description.present?
       p= place.description.truncate(250, omission: '...')
