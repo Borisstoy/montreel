@@ -13,7 +13,11 @@ html
     = stylesheet_link_tag    'application', media: 'all'
 
   body
+
     = render 'shared/flashes'
+    #resultsSliderwrapper
+      #resultsSliderContainer
+      #closeSliderBtn
     = yield
     = render "shared/analytics"
 

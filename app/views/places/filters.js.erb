@@ -1,4 +1,4 @@
-$("#filter-results").html("<%= escape_javascript(render partial: 'kind', locals: { places: @places_by_kind } ) %>");
+$("#resultsSliderContainer").html("<%= escape_javascript(render partial: 'results', locals: { places: @places_by_kind } ) %>");
 
 $(document).ready(function() {
   console.log('Initializaing map recenter on place click')
