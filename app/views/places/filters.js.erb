@@ -7,7 +7,7 @@ $(document).ready(function() {
       lat : newLat,
       lng : newLng
     });
-    map.setZoom(15);
+    map.setZoom(12);
   }
 
   var lat;
@@ -22,6 +22,7 @@ $(document).ready(function() {
     // open IW on place click
     var place_id = $(this).attr('data-id');
     var markersData = gon.markers;
+
 
     // match GMAP marker with place clicked id
     function findMarker(markersData) {
@@ -40,6 +41,7 @@ $(document).ready(function() {
         position: latlng,
         icon: icon
       });
+
 
       var iwContent = markerInfowindow;
 
