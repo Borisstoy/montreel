@@ -14,6 +14,9 @@ $(document).ready(function() {
   var lng;
 
   $('.places').on('click', function() {
+    // center on map resize (see slider.js.coffee)
+    google.maps.event.trigger(map, "resize")
+
     // recenter map on place click
     var lat = parseFloat($(this).attr('data-latitude'))
     var lng = parseFloat($(this).attr('data-longitude'))
@@ -22,7 +25,6 @@ $(document).ready(function() {
     // open IW on place click
     var place_id = $(this).attr('data-id');
     var markersData = gon.markers;
-
 
     // match GMAP marker with place clicked id
     function findMarker(markersData) {

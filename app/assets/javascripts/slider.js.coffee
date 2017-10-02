@@ -2,11 +2,15 @@ $(document).ready ->
   slider      = $('#resultsSliderContainer')
   openBtn     = $('.filter-button')
   closeBtn    = $('#closeSliderBtn')
+  map         = $('#places-map')
 
   $.easing.smoothEasing = (x, t, b, c, d) ->
       c * ((t = t / d - 1) * t * t + 1) + b
 
   openBtn.click ->
+
+    map.addClass('newMapWidth')
+
     if slider.css('margin-left') == '0px'
       slider.animate 'width': '400px'
     else
