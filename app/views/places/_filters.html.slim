@@ -4,5 +4,5 @@
                           'kind' =>  "#{kind}"}
       a= "#{label}"
 
-/ - if current_user && current_user.admin = true
-/   = link_to "Admin sign out", destroy_user_session_path, method: :delete
+- if current_user && current_user.admin = true
+  = link_to "Admin sign out", destroy_user_session_path, method: :delete
