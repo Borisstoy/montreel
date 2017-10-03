@@ -16,7 +16,7 @@ namespace :mtl_data do
 
   task import_cult_places: :environment do
     require 'csv'
-    puts "Parsing libraries"
+    puts "Parsing public places"
 
     CSV.foreach("db/data/libraries.csv", headers: true ) do |row|
 
@@ -34,26 +34,64 @@ namespace :mtl_data do
       pl.lat          = row[10]
       pl.description  = row[11]
       pl.save
+      puts "Saving #{row[2]}"
     end
 
-    puts "Import libraries done"
+    puts "-------------------------"
+    puts "Import public places done"
+    puts "-------------------------"
   end
 
   task import_monuments: :environment do
-    require 'csv'
+    require 'net/http'
+    require 'json'
+
+    puts "API call"
+
+    url = 'http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json'
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+
+    puts "-------------------------"
     puts "Parsing monuments"
+    puts "-------------------------"
 
-    CSV.foreach("db/data/monuments.csv", headers: true ) do |row|
+    JSON.parse(response).each do |monu|
+      params = {
+        place: {
+          borough: monu["Arrondissement"],
+          kind: "Monument",
+          name: monu["Titre"],
+          lng: monu["CoordonneeLongitude"],
+          lat: monu["CoordonneeLatitude"],
+          address: monu["AdresseCivique"],
+          monument_summary_attributes: {
+            collection_name_fr: monu["NomCollection"],
+            collection_name_en: monu["NomCollectionAng"],
+            category_fr: monu["CategorieObjet"],
+            category_en: monu["CategorieObjetAng"],
+            sub_category_fr: monu["SousCategorieObjet"],
+            sub_category_en: monu["SousCategorieObjetAng"],
+            materials_fr: monu["Materiaux"],
+            materials_en: monu["MateriauxAng"],
+            tech_fr: monu["Technique"],
+            tech_en: monu["TechniqueAng"],
+            park: monu["Parc"],
+            building: monu["Batiment"],
+            artist_name: monu["Artistes"][0]["Prenom"],
+            artist_last_name: monu["Artistes"][0]["Nom"]
+          }
+        }
+      }
 
-      pl = Place.new
-      pl.kind          = 'Monument'
-      pl.name          = row[1]
-      pl.lng           = row[4]
-      pl.lat           = row[5]
-      pl.save
+      Place.create(params[:place])
+
+      puts "Saving #{monu['Titre']}"
     end
 
+    puts "-------------------------"
     puts "Import monuments done"
+    puts "-------------------------"
   end
 end
 
