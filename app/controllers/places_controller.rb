@@ -15,7 +15,7 @@ class PlacesController < ApplicationController
   end
 
   def places_markers
-    @filtered_places = Place.all.include(:monument_summary)
+    @filtered_places = Place.all
     display_places_markers(@filtered_places)
   end
 
