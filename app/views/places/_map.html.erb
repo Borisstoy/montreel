@@ -2,14 +2,43 @@
   <script>
     $(document).ready(function() {
 
-      var markersData = <%= raw @places_markers.to_json %>;
-      // for clusters
-      var markers = [];
+      var markersData, markers, infoWindows, mcOptions;
 
-      var mcOptions = {
+      markersData = <%= raw @places_markers.to_json %>;
+
+      // for clusters
+      markers = [];
+
+      // for closing them
+      openedInfoWindow = [];
+
+      mcOptions = {
         gridSize: 80,
         minimumClusterSize: 6
       };
+
+      function closeInfoWindow() {
+        $( ".filter-button" ).click(function() {
+          for (var i=0; i < openedInfoWindow.length; i++) {
+            openedInfoWindow[i].close();
+          }
+        });
+      }
+
+      function hideMarkersOnKindClick() {
+        var placekind, markerPlaceKind;
+        $( ".filter-button" ).click(function() {
+          placeKind = $(this).attr('data-kind')
+          for (var i = 0; i < markers.length; i++){
+            markerPlaceKind = markers[i].place_kind
+            if (markerPlaceKind == placeKind) {
+              markers[i].setVisible(true)
+            } else {
+              markers[i].setVisible(false)
+            }
+          }
+        });
+      }
 
       function createMarker (latlng, markerInfowindow) {
         var markerDataKind = $(markerInfowindow).attr('data-place-kind')
@@ -32,7 +61,12 @@
             content: iwContent,
             closeWhenOthersOpen: true
           });
+
           infoWindow.open();
+
+          // store IW to be closed on filters click
+          openedInfoWindow.push(infoWindow);
+          closeInfoWindow()
         });
 
         // remotely load results list on marker click
@@ -61,8 +95,9 @@
           createMarker(latlng, markerInfowindow);
           bounds.extend(latlng);
         }
-        var markerCluster = new MarkerClusterer(map, markers, mcOptions);
+        // var markerCluster = new MarkerClusterer(map, markers, mcOptions);
         map.fitBounds(bounds);
+        hideMarkersOnKindClick();
       }
 
       function initialize() {

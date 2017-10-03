@@ -13,9 +13,8 @@ $(document).ready(function() {
   var lat;
   var lng;
 
+
   $('.places').on('click', function() {
-    // center on map resize (see slider.js.coffee)
-    google.maps.event.trigger(map, "resize")
 
     // recenter map on place click
     var lat = parseFloat($(this).attr('data-latitude'))
@@ -25,6 +24,25 @@ $(document).ready(function() {
     // open IW on place click
     var place_id = $(this).attr('data-id');
     var markersData = gon.markers;
+
+    // same logic as in map.html.erb
+    // TODO: extract and combine
+    openInfoWindow = [];
+
+    // center on map resize (see slider.js.coffee)
+    function resizeMap() {
+      $('.places, .filter-button').on('click', function(){
+        google.maps.event.trigger(map, "resize")
+      });
+    }
+
+    function closeInfoWindow() {
+      $( ".filter-button" ).click(function() {
+        for (var i=0; i < openInfoWindow.length;i++) {
+          openInfoWindow[i].close();
+        }
+      });
+    }
 
     // match GMAP marker with place clicked id
     function findMarker(markersData) {
@@ -44,7 +62,6 @@ $(document).ready(function() {
         icon: icon
       });
 
-
       var iwContent = markerInfowindow;
 
       infoWindow = new SnazzyInfoWindow({
@@ -53,6 +70,10 @@ $(document).ready(function() {
         closeWhenOthersOpen: true
       });
       infoWindow.open();
+
+      openInfoWindow.push(infoWindow);
+      closeInfoWindow();
+      resizeMap();
     }
 
     var icon = {
