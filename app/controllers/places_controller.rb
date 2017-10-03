@@ -14,11 +14,8 @@ class PlacesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def places_markers
-    @filtered_places = Place.all
+    @filtered_places = Place.all.include(:monument_summary)
     display_places_markers(@filtered_places)
   end
 
@@ -39,5 +36,22 @@ class PlacesController < ApplicationController
 
   def set_places
     @place = Place.find params[:id]
+  end
+
+  def permit_nested_params
+    params.require(:place).permit(monument_summary_attributes: [:collection_name_fr,
+                                                                :collection_name_en,
+                                                                :category_fr,
+                                                                :category_en,
+                                                                :sub_category_fr,
+                                                                :sub_category_en,
+                                                                :materials_fr,
+                                                                :materials_en,
+                                                                :tech_fr,
+                                                                :tech_en,
+                                                                :artist_name,
+                                                                :artist_last_name,
+                                                                :park,
+                                                                :building])
   end
 end
