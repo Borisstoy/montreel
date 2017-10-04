@@ -14,6 +14,11 @@
 
     p class='borough'
       = place.borough
+
+    .monument-breadcrumb
+      - if is_monument?(place)
+        p= place.artist_name
+
     p= place.truncate_description
 
 

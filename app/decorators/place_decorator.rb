@@ -18,4 +18,10 @@ class PlaceDecorator < Draper::Decorator
       name.downcase.capitalize
     end
   end
+
+  def artist_name
+    if monument_summary.artist_name.present?
+      monument_summary.artist_name
+    end
+  end
 end

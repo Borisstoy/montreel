@@ -12,6 +12,10 @@ module PlaceHelper
     end
   end
 
+  def is_monument?(place)
+    place.kind == 'Monument'
+  end
+
   def kinds_collection
     {
       "Centre communautaire": "Centres communautaires",
