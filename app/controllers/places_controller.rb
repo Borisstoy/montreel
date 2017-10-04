@@ -22,6 +22,7 @@ class PlacesController < ApplicationController
   def filters
     places_kind = params[:kind] if params[:kind].present?
     @places_by_kind = Place.where(kind: places_kind)
+    @places_by_kind = @places_by_kind.decorate
     respond_to do |format|
       format.js
       format.html

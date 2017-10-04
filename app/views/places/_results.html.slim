@@ -10,11 +10,11 @@
                 'longitude' =>  "#{place.lng}",
                 'id' => "place_#{place.id}"}
 
-    h5= place.name.downcase.capitalize
+    h5= place.name_cap
+
     p class='borough'
       = place.borough
-    - if place.description.present?
-      p= place.description.truncate(250, omission: '...')
+    p= place.truncate_description
 
 
 
