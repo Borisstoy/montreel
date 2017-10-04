@@ -12,14 +12,6 @@ module PlaceHelper
     end
   end
 
-  def places_description(description)
-    if description.present?
-      description
-    else
-      t('no_description')
-    end
-  end
-
   def kinds_collection
     {
       "Centre communautaire": "Centres communautaires",

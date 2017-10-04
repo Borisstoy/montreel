@@ -6,4 +6,5 @@
     span= place_contact(place)
 
   p.iw-desc
-    = places_description(place.description)
+    - desc = place.description
+    = desc ? desc : t('no_description')
