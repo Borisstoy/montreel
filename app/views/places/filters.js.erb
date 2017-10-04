@@ -1,7 +1,7 @@
 $("#resultsSliderContainer").html("<%= escape_javascript(render partial: 'results', locals: { places: @places_by_kind } ) %>");
 
 $(document).ready(function() {
-  console.log('Initializaing map recenter on place click')
+  console.log('Initializaing map recenter on marker click')
   function newLocation(newLat,newLng) {
     map.setCenter({
       lat : newLat,
@@ -28,13 +28,6 @@ $(document).ready(function() {
     // same logic as in map.html.erb
     // TODO: extract and combine
     openInfoWindow = [];
-
-    // center on map resize (see slider.js.coffee)
-    function resizeMap() {
-      $('.places, .filter-button').on('click', function(){
-        google.maps.event.trigger(map, "resize")
-      });
-    }
 
     function closeInfoWindow() {
       $( ".filter-button" ).click(function() {
@@ -73,7 +66,6 @@ $(document).ready(function() {
 
       openInfoWindow.push(infoWindow);
       closeInfoWindow();
-      resizeMap();
     }
 
     var icon = {
