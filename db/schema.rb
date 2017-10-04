@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002011646) do
+ActiveRecord::Schema.define(version: 20171003012853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,27 @@ ActiveRecord::Schema.define(version: 20171002011646) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "monument_summaries", force: :cascade do |t|
+    t.string "collection_name_fr"
+    t.string "collection_name_en"
+    t.string "category_fr"
+    t.string "category_en"
+    t.string "sub_category_fr"
+    t.string "sub_category_en"
+    t.string "materials_fr"
+    t.string "materials_en"
+    t.string "tech_fr"
+    t.string "tech_en"
+    t.string "artist_name"
+    t.string "artist_last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "place_id"
+    t.string "park"
+    t.string "building"
+    t.index ["place_id"], name: "index_monument_summaries_on_place_id"
   end
 
   create_table "places", force: :cascade do |t|
