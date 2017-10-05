@@ -21,7 +21,7 @@ class PlacesController < ApplicationController
 
   def filters
     places_kind = params[:kind] if params[:kind].present?
-    @places_by_kind = Place.where(kind: places_kind).order('name ASC')
+    @places_by_kind = Place.where(kind: places_kind).includes(:monument_summary).order('name ASC')
     @places_by_kind = @places_by_kind.decorate
     respond_to do |format|
       format.js
