@@ -19,7 +19,7 @@
 
       function recenterMap() {
         // on window resize
-        google.maps.event.addDomListener(map, 'bounds_changed', function() {
+        google.maps.event.addDomListener(window, 'resize', function() {
           var center = map.getCenter();
           google.maps.event.trigger(map, "resize");
           map.setCenter(center);
