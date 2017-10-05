@@ -33,8 +33,7 @@
       .places-intro
         h5= place.name_cap
         p class='borough'
-          = place.address
-          = place.phone
+          = place.address.truncate(56, omission: '...')
         p= place.truncate_description
 
 
