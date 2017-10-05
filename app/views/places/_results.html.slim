@@ -10,16 +10,32 @@
                 'longitude' =>  "#{place.lng}",
                 'id' => "place_#{place.id}"}
 
-    h5= place.name_cap
 
-    p class='borough'
-      = place.borough
+    - if is_monument?(place)
+      .monument-intro
+        h5= place.name_cap
+        p class='borough'
+          = place.location
+        = place.artist_full_name
 
-    .monument-breadcrumb
-      - if is_monument?(place)
-        p= place.artist_name
+      .monument-breadcrumb
+        - if is_monument?(place)
+          p class="collection"
+            = place.collection_name
+          p class="category"
+            = place.category
+          p class="sub_cat"
+            = place.sub_cat_fra
+          p class="tech"
+            = place.tech_fr
+    - else
+      .places-intro
+        h5= place.name_cap
+        p class='borough'
+          = place.address
+        p= place.truncate_description
 
-    p= place.truncate_description
+
 
 
 
