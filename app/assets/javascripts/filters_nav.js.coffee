@@ -19,8 +19,10 @@ $('#places-kind-filters').easeScroll({
   fixedBackground: true
 })
 
-$('#filter-results').scroll ->
-  if $(@).scrollTop() >= 0
+$('#resultsSliderContainer').scroll ->
+  if $(@).scrollTop() > 0
     $('#results-header').addClass('sticky-results-header')
+  else if $(@).scrollTop() == 0
+    $('#results-header').removeClass('sticky-results-header')
 
 
