@@ -18,8 +18,8 @@ module PlaceHelper
 
   def kinds_collection
     {
-      "Centre communautaire": "Centres communautaires",
       "Monument": "Monuments",
+      "Centre communautaire": "Centres communautaires",
       "Cinéma,Théâtre": "Cinémas, Théâtres",
       "Théâtre": "Théâtres",
       "Centre des loisirs": "Centres des loisirs",
