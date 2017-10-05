@@ -16,6 +16,7 @@ class PlacesController < ApplicationController
 
   def places_markers
     @filtered_places = Place.all
+    @filtered_places = @filtered_places.decorate
     display_places_markers(@filtered_places)
   end
 

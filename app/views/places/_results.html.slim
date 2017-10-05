@@ -14,9 +14,10 @@
     - if is_monument?(place)
       .monument-intro
         h5= place.name_cap
+        = place.artist_full_name
         p class='borough'
           = place.location
-        = place.artist_full_name
+          = place.phone
 
       .monument-breadcrumb
         - if is_monument?(place)
@@ -33,6 +34,7 @@
         h5= place.name_cap
         p class='borough'
           = place.address
+          = place.phone
         p= place.truncate_description
 
 

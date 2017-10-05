@@ -3,8 +3,27 @@
   h4.iw-title
     = place.name
   .iw-contact-info
-    span= place_contact(place)
+    - unless is_monument?(place)
+      span= place_contact(place)
+      span= place.address
+      span= place.borough
 
-  p.iw-desc
-    - desc = place.description
-    = desc ? desc : t('no_description')
+    - if is_monument?(place)
+      span class="iw-artist-name"
+        = place.artist_full_name
+      hr
+      span class="iw-location"
+        = place.address
+        = place.location
+      hr
+      span= place.category
+      br
+      span= place.sub_cat_fra
+      br
+      span= place.tech_fr
+
+
+  - unless is_monument?(place)
+    p.iw-desc
+      - desc = place.description
+      = desc ? desc : t('no_description')

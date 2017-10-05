@@ -4,10 +4,8 @@ module PlaceHelper
       label = Place.human_attribute_name(:website)
       website = place.website.split(',')[0]
       phone   = place.phone
-      address = place.address
-      borough = place.borough
       content_tag(:div) do
-        concat (link_to label, website, target: '_blank') + ' - ' + phone + "<br>".html_safe + "<hr>".html_safe + borough + ' - ' + address
+        concat (link_to label, website, target: '_blank') + ' - ' + phone + "<br>".html_safe + "<hr>".html_safe
       end
     end
   end
