@@ -21,17 +21,24 @@ class PlacesController < ApplicationController
   end
 
   def filters
-    places_kind = params[:kind] if params[:kind].present?
-    @places_by_kind = Place.where(kind: places_kind).includes(:monument_summary).order('name ASC')
-    @places_by_kind = @places_by_kind.decorate
-    respond_to do |format|
-      format.js
-      format.html
-    end
-    gon.markers = @places_markers
-  end
+    if params[:kind].present?
+      sanitized_place_kind = ActiveRecord::Base.connection.quote params[:kind]
 
-  def markers
+      query =
+        "SELECT *
+         FROM places
+         WHERE places.kind = #{sanitized_place_kind}
+         ORDER BY name ASC"
+      @places_by_kind = Place.find_by_sql(query)
+      @places_by_kind = @places_by_kind.map {|place| place.decorate }
+
+      respond_to do |format|
+        format.js
+        format.html
+      end
+    end
+
+    gon.markers = @places_markers
   end
 
   private
