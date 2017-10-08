@@ -1,6 +1,7 @@
-$("#resultsSliderContainer").html("<%= escape_javascript(render partial: 'results', locals: { places: @places_by_kind } ) %>");
+$("#resultsSliderContainer").html("<%= escape_javascript(render partial: 'results', locals: { places: @filtered_places}) %>");
 
 $(document).ready(function() {
+
   console.log('Initializaing map recenter on marker click')
   function newLocation(newLat,newLng) {
     map.setCenter({
@@ -8,11 +9,10 @@ $(document).ready(function() {
       lng : newLng
     });
     map.setZoom(12);
-  }
+  };
 
   var lat;
   var lng;
-
 
   $('.places').on('click', function() {
 
