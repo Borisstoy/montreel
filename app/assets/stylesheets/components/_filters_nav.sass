@@ -10,6 +10,8 @@
     z-index: 99999
 
     #places-kind-filters
+        height: 80%
+        overflow-y: auto
 
         .filter-button
             padding: .5em 1.4em
@@ -22,13 +24,54 @@
 
                 font-size: .74em
                 color: lighten($dark, 60%)
-                cursor: pointer
                 font-weight: 700
                 text-decoration: none
 
                 &:hover, &:active
+                    cursor: pointer
                     color: #fff
                     text-decoration: none
+
+        .monument-categories-filter-wrapper
+            margin-left: auto
+            +flexbox
+
+            .dropdown-btn
+                width: 100px
+                font-size: .8em
+
+                .fa-caret-right
+                    padding-left: 10%
+                    transform: rotate(0deg)
+                    transition: transform .1s linear
+
+                .fa-caret-right-open
+                    transform: rotate(90deg)
+                    transition: transform .1s linear
+
+
+            .categories-dropdown
+                +flexbox
+                +flexdirection-column
+                background: $dark
+                padding: 0 1.7em
+                color: #fff
+                font-size: .8em
+                top: -10px
+                line-height: 1.7em
+                width: 170px
+                display: none
+
+                span
+                    color: lighten($dark, 70%)
+                    cursor: pointer
+
+                    &:last-child
+                        padding-bottom: .6em
+                        border-bottom: 1px solid lighten($dark, 70%)
+
+                    &:hover
+                        color: #fff
 
     #logo-nav-map
         position: absolute
