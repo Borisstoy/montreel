@@ -1,7 +1,17 @@
 #places-kind-filters
-  - kinds_collection.each do |kind, label|
-    .filter-button data={ 'remote-url' => places_filters_path,
-                          'kind' =>  "#{kind}"}
+  .filter-button class="dropdown-btn" data={ 'remote-url' => places_filters_path,
+                                             'kind' =>  "Monument"}
+    a= "Monuments"
+
+  .monument-categories-filter-wrapper
+    .categories-dropdown.monuments-filter-btn
+      - @monument_sub_categories_names.each do |category|
+        span class="monuments-filter-btn_#{category}" data={'remote-url': "filters", "monument_cat": "#{category}"}
+          = category
+
+  - kinds_collection.except(:Monument).each do |kind, label|
+    .filter-button.places-kind-but-monuments data={ 'remote-url' => places_filters_path,
+                                                    'kind' =>  "#{kind}"}
       a= "#{label}"
 
 - if current_user && current_user.admin = true
