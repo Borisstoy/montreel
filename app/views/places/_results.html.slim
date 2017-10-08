@@ -1,15 +1,14 @@
 #results-header
-  .circle class="#{kind_header_color(places.first.kind)}"
+  .circle class="#{kind_header_color(places&.first&.kind)}"
 
-  h5
-    = places_results_header(places.first.kind)
-
+  .result-tile
+    h5 class="monument-title"
+      = places_results_header(places.first&.kind)
 
 - places.each do |place|
-  .places data={'latitude' =>  "#{place.lat}",
-                'longitude' =>  "#{place.lng}",
-                'id' => "place_#{place.id}"}
-
+  .places data={'latitude':  "#{place.lat}",
+                'longitude':  "#{place.lng}",
+                'id': "place_#{place.id}"}
 
     - if is_monument?(place)
       .monument-intro
@@ -35,8 +34,3 @@
         p class='borough'
           = place.address.truncate(56, omission: '...')
         p= place.truncate_description
-
-
-
-
-
