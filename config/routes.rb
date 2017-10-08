@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     root to: 'places#index'
     post 'places/filters', 'places#filters'
+    post 'places/monuments_filter', 'places#monuments_filter'
   end
 
 end
