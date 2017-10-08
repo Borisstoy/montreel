@@ -48,6 +48,6 @@ module GeocoderHelper
   end
 
   def display_places_markers(places)
-    @places_markers = build_places_markers(@filtered_places)
+    @places_markers = build_places_markers(@all_places)
   end
 end
