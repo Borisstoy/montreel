@@ -13,7 +13,7 @@ $ ->
         console.log 'ajax failed: places filter'
 
   console.log 'Initializaing monuments filter'
-  $('span[class*="monuments-filter-btn"], div[class*="monuments-filter-btn"]').on 'click', ->
+  $('span[class*="monuments-filter-btn"]').on 'click', ->
     monument_cat = $(this).attr('data-monument-cat')
     console.log monument_cat
     $.ajax
@@ -22,7 +22,8 @@ $ ->
       data:
         monument_cat: monument_cat
       success: (data) ->
-      error: error = {}
+      error:(data) ->
+        console.log 'ajax failed: monuments sub categories'
 
   $('.dropdown-btn').on 'click', (e) ->
     e.stopPropagation()
