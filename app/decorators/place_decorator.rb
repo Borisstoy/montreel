@@ -68,8 +68,8 @@ class PlaceDecorator < Draper::Decorator
   end
 
   def sub_cat_fra
-    if monument_summary.sub_category_fr.present?
-      monument_summary.sub_category_fr
+    if monument_summary.present?
+      monument_summary&.sub_category_fr
     end
   end
 

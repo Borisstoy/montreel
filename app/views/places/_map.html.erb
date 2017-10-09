@@ -38,12 +38,13 @@
         $( ".filter-button" ).click(function() {
           for (var i=0; i < openedInfoWindow.length; i++) {
             openedInfoWindow[i].close();
+
           }
         });
       }
 
       function hideMarkersOnKindClick() {
-        var placekind, markerPlaceKind;
+        var placeKind, markerPlaceKind;
         $( ".filter-button" ).click(function() {
           placeKind = $(this).attr('data-kind')
           for (var i = 0; i < markers.length; i++){
@@ -55,17 +56,34 @@
             }
           }
         });
+        $('span[class*="monuments-filter-btn"]').click(function() {
+          var monument_sub_category, markerMonumentSubCategory;
+          for (var i = 0; i < markers.length; i++){
+          monument_sub_category = $(this).attr('data-monument-cat')
+            markerMonumentSubCategory = markers[i].monument_sub_category
+            if (markerMonumentSubCategory == monument_sub_category) {
+              markers[i].setVisible(true)
+            } else if (monument_sub_category == "Toutes les catégories" && markers[i].place_kind == "Monument"){
+              markers[i].setVisible(true)
+            }
+            else {
+              markers[i].setVisible(false)
+            }
+          }
+        });
       }
 
       function createMarker (latlng, markerInfowindow) {
         var markerDataKind = $(markerInfowindow).attr('data-place-kind')
+        var monument_sub_category = $(markerInfowindow).attr('data-monument-sub-category')
         conditionalMarker(markerInfowindow, markerDataKind)
 
         var marker = new google.maps.Marker({
           map: map,
           position: latlng,
           icon: icon,
-          place_kind: markerDataKind
+          place_kind: markerDataKind,
+          monument_sub_category: monument_sub_category
         });
         markers.push(marker);
 
