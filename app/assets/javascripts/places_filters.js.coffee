@@ -15,7 +15,6 @@ $ ->
   console.log 'Initializaing monuments filter'
   $('span[class*="monuments-filter-btn"]').on 'click', ->
     monument_cat = $(this).attr('data-monument-cat')
-    console.log monument_cat
     $.ajax
       url: 'places/filters'
       method: 'POST'
