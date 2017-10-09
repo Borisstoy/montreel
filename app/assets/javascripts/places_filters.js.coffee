@@ -28,11 +28,6 @@ $ ->
     e.stopPropagation()
     $('.categories-dropdown').slideDown(300).css 'display', 'flex'
 
-  $('span[class*="monuments-filter-btn"]').on 'click', (e) ->
-    e.preventDefault()
-    category = $(this).text()
-    $('span.dropdown-btn').html category
-
   $('.places-kind-but-monuments').on 'click', ->
     $('.categories-dropdown').slideUp 300
 

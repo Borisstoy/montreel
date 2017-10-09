@@ -1,6 +1,6 @@
 $('#places-kind-filters').ready ->
-  $('.filter-button').click ->
-    if $('.filter-button').removeClass('active-filter-button')
+  $('.filter-button, span[class*="monuments-filter-btn"]').click ->
+    if $('.filter-button, span[class*="monuments-filter-btn"]').removeClass('active-filter-button')
       $(@).removeClass 'active-filter-button'
     $(@).addClass 'active-filter-button'
 
