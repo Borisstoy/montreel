@@ -36,3 +36,15 @@ $ ->
   $('.places-kind-but-monuments').on 'click', ->
     $('.categories-dropdown').slideUp 300
 
+  ajaxLoader = $('#loading-spinner').hide()
+  ajaxLoadTimeout = undefined
+  $(document).ajaxStart(->
+    ajaxLoadTimeout = setTimeout((->
+      ajaxLoader.show()
+    ), 400)
+  ).ajaxSuccess ->
+    clearTimeout ajaxLoadTimeout
+    ajaxLoader.hide()
+
+
+
