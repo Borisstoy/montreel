@@ -36,7 +36,7 @@ $ ->
   $(document).ajaxStart(->
     ajaxLoadTimeout = setTimeout((->
       ajaxLoader.show()
-    ), 400)
+    ), 600)
   ).ajaxSuccess ->
     clearTimeout ajaxLoadTimeout
     ajaxLoader.hide()
