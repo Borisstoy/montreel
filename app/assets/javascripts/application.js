@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require easeScroll
 //= require filters_nav
+//= require welcome
 //= require markerclusterer
 //= require places_filters
 //= require slider

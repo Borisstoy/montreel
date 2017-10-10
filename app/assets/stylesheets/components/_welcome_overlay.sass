@@ -1,0 +1,54 @@
+#black-overlay
+    width: 100%
+    height: 100vh
+    background: #fff
+    position: absolute
+    z-index: 9999999
+
+#welcome-overlay
+    position: absolute
+    z-index: 99999999
+    height: 100vh
+    width: 100%
+    background: #fff
+    +flexbox
+    +alignitems-center
+    +justifycontent-center
+
+
+    .overlay-container
+        width: 30%
+
+        .places-index-intro
+            margin-left: -1200px
+
+        h1,h2,h3,h4,h5,p
+            font-family: $serif-font!important
+
+        .text-intro
+            padding: 1em 0 0
+
+        .logo-welcome
+            width: 80px
+
+        #close-welcome-btn
+            margin-left: -1200px
+
+        #close-welcome-btn, #welcome-btn
+            border-radius: .2em
+            width: 60px
+            height: 30px
+            background: $dark
+            cursor: pointer
+            color: #fff
+            font-size: .9em
+            padding: .4em .7em
+
+            span, a
+                color: #fff
+                font-size: .9em
+                text-decoration: none
+
+            &:hover
+                background: lighten($dark, 20%)
+                text-decoration: none

@@ -1,4 +1,10 @@
 fr:
+  welcome: "Tous les monuments, bibliothèques, théâtres... et bien d'autres bâtiments publics de la ville de Montreal"
+  discover: "Découvrez les quelques"
+  public_places: "lieux publics de la ville de Montreal"
+  enter: "Entrer"
+  navigate: "Naviger"
   no_description: "Pas de description"
   all_categories: "Toutes les catégories"
   categories: "Catégories"
+

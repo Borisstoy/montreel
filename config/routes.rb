@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     ActiveAdmin.routes(self)
     devise_for :users
 
-    root to: 'places#index'
+    root to: 'pages#home'
+    resources :places
     post 'places/filters', 'places#filters'
     post 'places/monuments_filter', 'places#monuments_filter'
   end

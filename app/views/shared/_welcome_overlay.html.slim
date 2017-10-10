@@ -1,0 +1,20 @@
+#welcome-overlay
+  .overlay-container
+    = image_tag 'logo-montreel.svg', class: 'logo-welcome'
+    - if is_home?
+      .home-page-into
+        p class="text-intro"
+          = t('welcome')
+    - else
+      .places-index-intro
+        p class="text-intro"
+          = t('discover') + " " "#{@all_places.count}" + " " + t('public_places')
+
+    - if is_home?
+      span id='welcome-btn'
+        = link_to t('enter'), places_path
+    - else
+      span id='close-welcome-btn'
+        = t('navigate')
+
+#black-overlay
