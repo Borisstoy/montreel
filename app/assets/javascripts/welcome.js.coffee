@@ -6,10 +6,20 @@ $ ->
     $('.layer1').css 'height':'100vh'
     $('.layer2').delay(200).animate {'height':'100vh'}
     $('.layer3').delay(400).animate {'height':'100vh'}
+    $('.overlay-container').delay(200)
+                           .animate {
+                            'margin-bottom':'-1800px'
+                           }
+                           .toggleClass('slide-down')
 
   if (window.location.href.match('/places') != null)
 
     $(window).bind "load", ->
+
+      $('.overlay-container').fadeIn()
+                             .animate {
+                              'margin-left':'0'
+                             }
 
       $('#welcome-overlay').delay(600)
                            .animate {'width': '400px'}
