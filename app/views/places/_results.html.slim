@@ -33,4 +33,4 @@
         h5= place.name_cap
         p class='borough'
           = place.address.truncate(56, omission: '...')
-        p= place.truncate_description
+        p class="description"= place.truncate_description

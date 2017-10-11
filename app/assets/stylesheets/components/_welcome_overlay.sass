@@ -15,6 +15,38 @@
     +alignitems-center
     +justifycontent-center
 
+    .home-bg
+        height: 100vh
+        width: 100%
+        position: absolute
+        z-index: -9999
+        transition: 1s
+
+        &:before
+            content: ''
+            position: absolute
+            width: 100%
+            height: 100vh
+            z-index: -1
+            background-image: url(home-bg-min.jpg)
+            background-position: -200px 0, 0 -25px
+
+        .layer
+            position: absolute
+            width: 33.333333%
+            background: #fff
+            height: 0
+            transition: 1s
+
+        .layer1
+            float: left
+
+        .layer2
+            left: 33.333333%
+
+        .layer3
+            float: right
+            position: relative
 
     .overlay-container
         width: 30%
@@ -25,11 +57,15 @@
         h1,h2,h3,h4,h5,p
             font-family: $serif-font!important
 
+        h4
+            margin-top: 9%
         .text-intro
-            padding: 1em 0 0
+            padding: .3em 0 0
+            height: 70px
 
         .logo-welcome
             width: 80px
+            margin-bottom: 6%
 
         #close-welcome-btn
             margin-left: -1200px
