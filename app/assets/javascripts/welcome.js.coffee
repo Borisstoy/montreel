@@ -12,7 +12,12 @@ $ ->
                            }
                            .toggleClass('slide-down')
 
+
   if (window.location.href.match('/places') != null)
+
+    pageLoaderAnimation = $('#loading-spinner').hide()
+    unless document.readyState == 'complete'
+      pageLoaderAnimation.show()
 
     $(window).bind "load", ->
 
