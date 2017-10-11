@@ -33,16 +33,16 @@ $ ->
       duration: 800
       specialEasing: width: 'smoothEasing'
 
-      $('.places-index-intro').delay(2000).animate {
+      $('.places-index-intro').delay(1500).animate {
         'margin-left': '0'
       },
-      duration: 800
+      duration: 400
       specialEasing: width: 'smoothEasing'
 
-      $('#close-welcome-btn').delay(2000).animate {
+      $('#close-welcome-btn').delay(1500).animate {
         'margin-left': '0'
       },
-      duration: 800
+      duration: 400
       specialEasing: width: 'smoothEasing'
 
 

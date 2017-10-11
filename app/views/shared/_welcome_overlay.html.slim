@@ -7,8 +7,8 @@
       .layer.layer3
 
   .overlay-container
-    = image_tag 'logo-montreel.svg', class: 'logo-welcome'
     - if is_home?
+      = image_tag 'logo-montreel.svg', class: 'logo-welcome'
       .home-page-into
         p class="text-intro"
           = t('welcome')

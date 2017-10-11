@@ -1,7 +1,8 @@
 #navmap
   = render 'filters'
   #logo-nav-map
-    = image_tag 'logo-montreel-white.svg'
+    = link_to root_path do
+      = image_tag 'logo-montreel-white.svg'
     span class="year"
       = "© #{Time.now.year}"
 
