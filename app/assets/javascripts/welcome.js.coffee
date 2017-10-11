@@ -8,10 +8,7 @@ $ ->
     $('.layer1').css 'height':'100vh'
     $('.layer2').delay(200).animate {'height':'100vh'}
     $('.layer3').delay(400).animate {'height':'100vh'}
-    # $('.overlay-container').animate {
-    #                         'margin-bottom':'-1800px'
-    #                        }
-    #                        .toggleClass('slide-down')
+    $('.logo-welcome').fadeOut(8000)
 
     ajaxLoader.show().fadeOut(9000)
 
@@ -19,7 +16,7 @@ $ ->
 
     $(window).bind "load", ->
       $('#white-overlay').animate {'margin-left':'-1000px'}
-
+      $('.logo-welcome').hide()
       $('.overlay-container').animate { 'margin-left':'0'}
 
 
