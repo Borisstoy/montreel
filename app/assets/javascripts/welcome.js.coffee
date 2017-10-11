@@ -1,8 +1,17 @@
+ajaxLoader = $('#loading-spinner').hide()
+switch document.readyState
+  when 'loading'
+    ajaxLoader.show()
+  when 'complete'
+    ajaxLoader.hide()
+
 $ ->
   $.easing.smoothEasing = (x, t, b, c, d) ->
       c * ((t = t / d - 1) * t * t + 1) + b
 
   $('#welcome-btn').on 'click', ->
+    ajaxLoader = $('#loading-spinner').fadeIn(800)
+
     $('.layer1').css 'height':'100vh'
     $('.layer2').delay(200).animate {'height':'100vh'}
     $('.layer3').delay(400).animate {'height':'100vh'}
@@ -11,13 +20,9 @@ $ ->
                             'margin-bottom':'-1800px'
                            }
                            .toggleClass('slide-down')
-
+    ajaxLoader.show()
 
   if (window.location.href.match('/places') != null)
-
-    pageLoaderAnimation = $('#loading-spinner').hide()
-    unless document.readyState == 'complete'
-      pageLoaderAnimation.show()
 
     $(window).bind "load", ->
 
