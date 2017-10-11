@@ -38,7 +38,11 @@
         $( ".filter-button" ).click(function() {
           for (var i=0; i < openedInfoWindow.length; i++) {
             openedInfoWindow[i].close();
-
+          }
+        });
+        $('span[class*="monuments-filter-btn"]').click(function() {
+          for (var i=0; i < openedInfoWindow.length; i++) {
+            openedInfoWindow[i].close();
           }
         });
       }

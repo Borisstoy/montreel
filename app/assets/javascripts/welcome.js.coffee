@@ -11,27 +11,24 @@ $ ->
 
     $(window).bind "load", ->
 
-      $('#welcome-overlay').delay(700).animate {
-        'width': '400px'
-        },
-      duration: 800
-      specialEasing: width: 'smoothEasing'
+      $('#welcome-overlay').delay(600)
+                           .animate {'width': '400px'}
 
       $('.overlay-container').animate 'width':'300px'
 
-      $('#welcome-btn').delay(1500).animate {
+      $('#welcome-btn').delay(1900).animate {
         'margin-left': '-800'
       },
       duration: 800
       specialEasing: width: 'smoothEasing'
 
-      $('.places-index-intro').delay(1000).animate {
+      $('.places-index-intro').delay(2000).animate {
         'margin-left': '0'
       },
       duration: 800
       specialEasing: width: 'smoothEasing'
 
-      $('#close-welcome-btn').delay(1000).animate {
+      $('#close-welcome-btn').delay(2000).animate {
         'margin-left': '0'
       },
       duration: 800
@@ -45,3 +42,4 @@ $ ->
         duration: 800
         specialEasing: width: 'smoothEasing'
 
+        $('#welcome-overlay').removeClass 'transitioned-1s'

@@ -1,3 +1,6 @@
+.transitioned-1s
+    transition: 1s
+
 #black-overlay
     width: 100%
     height: 100vh
@@ -20,7 +23,6 @@
         width: 100%
         position: absolute
         z-index: -9999
-        transition: 1s
 
         &:before
             content: ''
@@ -28,7 +30,7 @@
             width: 100%
             height: 100vh
             z-index: -1
-            background-image: url(home-bg-min.jpg)
+            background-image: image-url('home-bg-min.jpg')
             background-position: -200px 0, 0 -25px
 
         .layer
