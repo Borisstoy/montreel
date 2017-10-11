@@ -25,6 +25,13 @@ $screen-lg-max: 1024px;
   border-radius: .2em!important;
 }
 
+@mixin transition($sec) {
+  -webkit-transition: ($sec);
+  -moz-transition:    ($sec);
+  -o-transition:      ($sec);
+  transition:         ($sec);
+}
+
 @mixin flexbox {
   -js-display: flex;
   display: -webkit-box;
