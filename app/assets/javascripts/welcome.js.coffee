@@ -18,10 +18,9 @@ $ ->
   if (window.location.href.match('/places') != null)
 
     $(window).bind "load", ->
+      $('#white-overlay').animate {'margin-left':'-1000px'}
 
-      $('.overlay-container').animate {
-                              'margin-left':'0'
-                             }
+      $('.overlay-container').animate { 'margin-left':'0'}
 
 
       $('#welcome-overlay').delay(600)
