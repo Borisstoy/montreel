@@ -1,10 +1,3 @@
-ajaxLoader = $('#loading-spinner').hide()
-switch document.readyState
-  when 'loading'
-    ajaxLoader.show()
-  when 'complete'
-    ajaxLoader.hide()
-
 $ ->
   $.easing.smoothEasing = (x, t, b, c, d) ->
       c * ((t = t / d - 1) * t * t + 1) + b
