@@ -13,7 +13,7 @@ $ ->
     #                        }
     #                        .toggleClass('slide-down')
 
-    ajaxLoader.show().fadeOut(2000)
+    ajaxLoader.show().fadeOut(9000)
 
   if (window.location.href.match('/places') != null)
 
