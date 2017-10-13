@@ -40,6 +40,3 @@ $ ->
   ).ajaxSuccess ->
     clearTimeout ajaxLoadTimeout
     ajaxLoader.hide()
-
-
-
