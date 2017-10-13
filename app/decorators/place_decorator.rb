@@ -56,46 +56,50 @@ class PlaceDecorator < Draper::Decorator
   end
 
   def collection_name
-    if monument_summary.collection_name_fr.present?
-      monument_summary.collection_name_fr
-    end
+    monument_summary&.collection_name_fr
   end
 
   def category
-    if monument_summary.category_fr.present?
-      monument_summary.category_fr
-    end
+    monument_summary&.category_fr
   end
 
   def sub_cat_fra
-    if monument_summary.present?
-      monument_summary&.sub_category_fr
-    end
+    monument_summary&.sub_category_fr
   end
 
   def material_fr
-    if monument_summary.materials_fr.present?
-      monument_summary.materials_fr
-    end
+    monument_summary&.materials_fr
   end
 
   def tech_fr
     if monument_summary.tech_fr.present?
-      monument_summary.tech_fr
+      monument_summary&.tech_fr
                       .gsub(';', ' ~')
                       .downcase.truncate(85, omission: '...')
     end
   end
 
   def park
-    if monument_summary.park.present?
-      monument_summary.park
-    end
+    monument_summary&.park
   end
 
   def building
-    if monument_summary.building.present?
-      monument_summary.building
-    end
+    monument_summary&.building
+  end
+
+  def wall_artist
+    wall_summary&.artist.truncate(30, omission: '...')
+  end
+
+  def wall_organisation
+    wall_summary&.organisation
+  end
+
+  def wall_program
+    wall_summary&.program
+  end
+
+  def wall_image
+    wall_summary&.image
   end
 end
