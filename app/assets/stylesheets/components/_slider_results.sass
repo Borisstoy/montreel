@@ -31,11 +31,16 @@
             &:first-child
                 margin-top: 60px
 
-            .monument-intro
-                float: left
-                width: 60%
+            .wall-intro
+                .spinner
+                    width: 55%
+                    float: right
+                    position: relative
+                    z-index: 1
+                    right: 0
+                    top: -70px
 
-            .monument-intro, .places-intro
+            .monument-intro, .places-intro, .wall-intro
 
                 .artist-name
                     font-size: .9em
@@ -59,6 +64,10 @@
 
                 .description
 
+            .monument-intro
+                float: left
+                width: 60%
+
             .monument-breadcrumb
                 float: right
                 width: 40%
@@ -75,12 +84,36 @@
                     font-size: .7em
                     color: lighten($dark, 45%)
 
+            .wall-intro
+
+                .intro
+                    float: left
+                    width: 50%
+
+                .picture
+                    float: right
+                    width: 50%
+                    overflow: hidden
+
+                    img
+                        object-fit: cover
+                        position: relative
+                        width: 100%
+                        height: 105px
+                        z-index: 999
+
+                .picture-highlight
+                    z-index: 999999
+                    position: absolute
+                    display: none
+
         #results-header
             padding: 0 1.4em
             height: 60px
             +flexbox
             +alignitems-center
             background: #fff
+            z-index: 9999
 
             .circle
                 margin-right: 3%
@@ -131,6 +164,8 @@
             +header-circle($spe)
         .church
             +header-circle($church)
+        .wall
+            +header-circle($wall)
 
         //
 
