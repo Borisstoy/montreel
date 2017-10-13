@@ -1,28 +1,36 @@
 namespace :mtl_data do
   desc "Run all rake tasks"
-  task run_all: [:environment, 'mtl_data:reset_places',
-                               'mtl_data:import_cult_places',
-                               'import_monuments']
+  task run_all: [:environment, 'import_cult_places',
+                               'import_monuments',
+                               'import_walls']
 
   desc "Import mtl cultural places"
 
-  task reset_places: :environment do
+  task import_cult_places: :environment do
+    require 'csv'
+
     puts "Destroying all Places"
     Place.destroy_all
 
     puts "Dumping & Reseting Places table IDs"
     ActiveRecord::Base.connection.reset_pk_sequence!('places')
-  end
 
-  task import_cult_places: :environment do
-    require 'csv'
     puts "Parsing public places"
 
     CSV.foreach("db/data/libraries.csv", headers: true ) do |row|
 
       pl = Place.new
       pl.borough      = row[0]
-      pl.kind         = row[1]
+      case row[1]
+      when 'Cinéma'
+        pl.kind       = 'Cinéma,Théâtre'
+      when 'Théâtre'
+        pl.kind       = 'Cinéma,Théâtre'
+      when 'Musée municipal'
+        pl.kind       = 'Salle de spectacle,Musée municipal'
+      else
+        pl.kind       = row[1]
+      end
       pl.name         = row[2]
       pl.address      = row[3]
       pl.zip          = row[4]
@@ -46,7 +54,13 @@ namespace :mtl_data do
     require 'net/http'
     require 'json'
 
-    puts "API call"
+    puts "Destroying all monuments summaries"
+    MonumentSummary.destroy_all
+
+    puts "Dumping & Reseting Monuments summaries table IDs"
+    ActiveRecord::Base.connection.reset_pk_sequence!('monument_summaries')
+
+    puts "API call: Monuments"
 
     url = 'http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json'
     uri = URI(url)
@@ -91,6 +105,53 @@ namespace :mtl_data do
 
     puts "-------------------------"
     puts "Import monuments done"
+    puts "-------------------------"
+  end
+
+  task import_walls: :environment do
+    require 'net/http'
+    require 'json'
+
+    puts "Destroying all walls summaries"
+    WallSummary.destroy_all
+
+    puts "Dumping & Reseting Walls summaries table IDs"
+    ActiveRecord::Base.connection.reset_pk_sequence!('wall_summaries')
+
+    puts "API call: Walls"
+
+    url = 'http://donnees.ville.montreal.qc.ca/dataset/53d2e586-6e7f-4eae-89a1-2cfa7fc29fa0/resource/d325352b-1c06-4c3a-bf5e-1e4c98e0636b/download/murales.json'
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+
+    puts "-------------------------"
+    puts "Parsing Walls"
+    puts "-------------------------"
+
+    JSON.parse(response)['features'].each do |wall|
+      params = {
+        wall: {
+          kind: "Wall",
+          lng: wall["properties"]["longitude"],
+          lat: wall["properties"]["latitude"],
+          address: wall["properties"]["adresse"],
+          wall_summary_attributes: {
+            type: wall["properties"]["type"],
+            artist: wall["properties"]["artiste"],
+            organisation: wall["properties"]["organisation"],
+            program: wall["properties"]["program"],
+            image: wall["properties"]["image"]
+          }
+        }
+      }
+
+      Place.create(params[:wall])
+
+      puts "Saving #{wall["properties"]["artiste"]}"
+    end
+
+    puts "-------------------------"
+    puts "Import walls done"
     puts "-------------------------"
   end
 end
