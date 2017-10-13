@@ -28,9 +28,32 @@
             = place.sub_cat_fra
           p class="tech"
             = place.tech_fr
+
+    - elsif is_wall?(place)
+      .wall-intro
+        .intro
+          h5= place.wall_artist
+          p class='borough'
+            = place.address
+            br
+            = "Organisation: #{place.wall_organisation}"
+            br
+            - if place.wall_program.present?
+              = "Program: #{place.wall_program}"
+
+        .picture
+          = image_tag "#{place.wall_image}", class: 'wall-image'
+          .spinner.img-loader
+            #largeBox
+            #smallBox
+
+        .picture-highlight
+          = image_tag "#{place.wall_image}", class: 'wall-image'
+
     - else
       .places-intro
         h5= place.name_cap
         p class='borough'
           = place.address.truncate(56, omission: '...')
         p class="description"= place.truncate_description
+

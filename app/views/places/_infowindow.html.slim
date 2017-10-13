@@ -5,10 +5,6 @@
   h4.iw-title
     = place.name
   .iw-contact-info
-    - unless is_monument?(place)
-      span= place_contact(place)
-      span= place.address
-      span= place.borough
 
     - if is_monument?(place)
       span class="iw-artist-name"
@@ -24,8 +20,26 @@
       br
       span= place.tech_fr
 
+    - elsif is_wall?(place)
+      h5= place.wall_artist
+      span class='iw-location'
+        = place.address
+        br
+        = "Organisation: #{place.wall_organisation}"
+        hr
+        - if place.wall_program.present?
+          = "Program: #{place.wall_program}"
 
-  - unless is_monument?(place)
+      .iw-picture
+        = image_tag "#{place.wall_image}", class: 'wall-image'
+
+    - else
+      span= place_contact(place)
+      span= place.address
+      span= place.borough
+
+
+  - unless is_monument?(place) || is_wall?(place)
     p.iw-desc
       - desc = place.description
       = desc ? desc : t('no_description')

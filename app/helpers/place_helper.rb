@@ -14,20 +14,22 @@ module PlaceHelper
     place.kind == 'Monument'
   end
 
+  def is_wall?(place)
+    place.kind == 'Wall'
+  end
+
   def kinds_collection
     {
       "Monument": "Monuments",
+      "Wall": "Fresques murales",
       "Centre communautaire": "Centres communautaires",
       "Cinéma,Théâtre": "Cinémas, Théâtres",
-      "Théâtre": "Théâtres",
       "Centre des loisirs": "Centres des loisirs",
-      "Cinéma": "Cinémas",
       "Bibliothèque,Centre communautaire,Salle de spectacle": "Bibliothèques, Centres communautaires, Salles de spectacles",
       "Salle de spectacle,Musée municipal": "Salles de spectacles, Musées municipaux",
-      "Musée municipal": "Musées municipaux",
       "Bibliothèque": "Bibliothèques",
       "Salle de spectacle": "Salles de spectacles",
-      "Église": "Églises",
+      "Église": "Églises"
     }
   end
 
@@ -45,6 +47,8 @@ module PlaceHelper
     case kind
     when "Centres communautaires"
       "com_centers"
+    when "Fresques murales"
+      "wall"
     when "Monuments"
       "monuments"
     when "Cinémas, Théâtres"

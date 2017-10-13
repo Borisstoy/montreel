@@ -172,6 +172,8 @@
           icon = spe
         } else if (markerDataKind == 'Église'){
           icon = church
+        } else if (markerDataKind == 'Wall'){
+          icon = wall
         }
       }
       var iconScale = 1.3
@@ -275,6 +277,14 @@
       var church = {
         path: "M4.415,8.829c2.432,0,4.415-1.983,4.415-4.415 C8.829,1.983,6.846,0,4.415,0S0,1.983,0,4.415C0,6.846,1.983,8.829,4.415,8.829z",
         fillColor: '#ff9800',
+        fillOpacity: 1,
+        anchor: new google.maps.Point(0,0),
+        strokeWeight: 0,
+        scale: iconScale
+      }
+      var wall = {
+        path: "M4.415,8.829c2.432,0,4.415-1.983,4.415-4.415 C8.829,1.983,6.846,0,4.415,0S0,1.983,0,4.415C0,6.846,1.983,8.829,4.415,8.829z",
+        fillColor: '#f7630c',
         fillOpacity: 1,
         anchor: new google.maps.Point(0,0),
         strokeWeight: 0,
