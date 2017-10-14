@@ -44,6 +44,8 @@
         .picture
           .wall-image-container data={'place-id': "#{place.id}"}
             = image_tag "#{place.wall_image}", class: 'wall-image', data: {'image-id': "#{place.id}"}
+          .wall-image-infobox data={'infobox-id': "#{place.id}"}
+            span= t('click_to_enlarge')
           .spinner.img-loader
             #largeBox
             #smallBox

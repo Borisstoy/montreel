@@ -28,6 +28,19 @@ $(document).ready(function() {
     }
   });
 
+  $('.wall-image-container').bind('mouseenter', function() {
+    var imageContainer = $(this).attr('data-place-id')
+    var imageId = $(this).children().attr('data-image-id')
+    if (imageContainer == imageId) {
+      var infoBox = $('.wall-image-infobox[data-infobox-id="' + imageId + '" ]')
+      infoBox.fadeIn()
+    }
+  })
+
+  $('.wall-image-container').bind('mouseleave', function(){
+    $('.wall-image-infobox').fadeOut();
+  })
+
   var panPath = [];   // An array of points the current panning action will use
   var panQueue = [];  // An array of subsequent panTo actions to take
   var STEPS = 30;     // The number of steps that each panTo action will undergo
