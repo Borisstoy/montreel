@@ -1,0 +1,17 @@
+.wrapper-contact
+  h4.slider-intro
+
+  = render 'form', new_contact: @new_contact
+
+  .powered-wrapper
+    .contact-wrap
+      p.address
+        400 Atlantic #205
+        Montreal (Quebec), H2V 1A5
+        Canada
+      p.contact
+        span.phone= "+1 514 582-3924"
+
+        span.email= "info@codegenome.com"
+
+    = t('slider.powered_by')

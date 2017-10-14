@@ -3,6 +3,7 @@
 //= require easeScroll
 //= require filters_nav
 //= require welcome
+//= require contact
 //= require markerclusterer
 //= require places_filters
 //= require slider

@@ -1,0 +1,18 @@
+= simple_form_for new_contact, html: { class: 'contact-form' }  do |f|
+
+  = f.input      :name,
+                 label: false,
+                 placeholder: I18n.t('contact.name'),
+                 required: true,
+                 class: 'name-form'
+
+  = f.input      :email,
+                 label: false,
+                 placeholder: I18n.t('contact.email'),
+                 required: true,
+                 class: 'email-form'
+
+  = f.text_area :content,
+                placeholder: I18n.t('contact.text_area')
+
+  = f.button :submit, I18n.t('contact.contact_submit')

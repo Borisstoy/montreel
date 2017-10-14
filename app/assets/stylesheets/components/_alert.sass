@@ -1,11 +1,30 @@
 .alert
     margin: 0
     text-align: center
-    color: white
+    width: 60%
+    margin: 0 auto
+    +border-radius
+    top: 26px
+    left: 0
+    right: 0
+    position: relative
+    width: 30%
+    font-size: .8em
+    z-index: 99999999999
+
+    @media (max-width: $screen-lg)
+        width: 90%
+
+    button
+        display: none
 
 .alert-info
-    background: $green
+    background-color: rgba(46, 204, 113, 0.2)
+    border: 1px solid $green
+    color: $green
 
 .alert-warning
-    background: $red
+    background-color: rgba(241, 196, 15, 0.2)
+    border: 1px solid $yellow
+    color: $yellow
 

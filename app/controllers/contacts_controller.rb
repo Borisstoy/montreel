@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @new_contact.save
-        format.html { redirect_to root_path }
+        format.html { redirect_back(fallback_location: root_path) }
         format.js
         flash[:notice] = t('controllers.contacts.success')
         AdminNotificationMailer.new_contact_notification(@new_contact).deliver

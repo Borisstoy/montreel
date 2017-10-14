@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       root to: 'pages#home'
     end
     resources :places
+    resources :contacts
     post 'places/filters', 'places#filters'
     post 'places/monuments_filter', 'places#monuments_filter'
   end
