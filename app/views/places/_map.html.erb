@@ -32,6 +32,13 @@
           map.setCenter(center);
           map.setZoom(11);
         });
+
+        if ($('#places-map').hasClass('newMapWidth')) {
+          var center = map.getCenter();
+          google.maps.event.trigger(map, "resize");
+          map.setCenter(center);
+          map.setZoom(11);
+        }
       }
 
       function closeInfoWindow() {
