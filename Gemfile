@@ -51,7 +51,7 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-
+  gem "letter_opener"
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
