@@ -1,7 +1,6 @@
 $("#resultsSliderContainer").html("<%= escape_javascript(render partial: 'results', locals: { places: @filtered_places}) %>");
 
 $(document).ready(function() {
-
   console.log('Initializaing map recenter on marker click')
   function newLocation(newLat,newLng) {
     map.setCenter({
@@ -13,6 +12,21 @@ $(document).ready(function() {
 
   var lat;
   var lng;
+
+  $('.wall-image-container').on('click', function() {
+    var imageContainer = $(this).attr('data-place-id')
+    var imageId = $(this).children().attr('data-image-id')
+    if (imageContainer == imageId) {
+      var pictureHighlight = $('.picture-highlight[data-highlight-id="' + imageId + '" ]')
+      pictureHighlight.fadeIn(300);
+      $('#navmap, .picture-highlight').on('click', function() {
+        pictureHighlight.fadeOut(300)
+      })
+      $('.highlight-close').on('click', function (){
+        pictureHighlight.fade(300)
+      })
+    }
+  });
 
   $('.places').on('click', function() {
 
@@ -78,6 +92,5 @@ $(document).ready(function() {
     }
 
     openInfowWindow();
-
   })
 });

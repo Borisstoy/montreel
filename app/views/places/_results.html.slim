@@ -42,13 +42,19 @@
               = "Program: #{place.wall_program}"
 
         .picture
-          = image_tag "#{place.wall_image}", class: 'wall-image'
+          .wall-image-container data={'place-id': "#{place.id}"}
+            = image_tag "#{place.wall_image}", class: 'wall-image', data: {'image-id': "#{place.id}"}
           .spinner.img-loader
             #largeBox
             #smallBox
 
-        .picture-highlight
-          = image_tag "#{place.wall_image}", class: 'wall-image'
+      .picture-highlight data={'highlight-id': "#{place.id}"}
+        .highlight-close
+        span.higlight-name
+          = place.wall_artist
+        span.higlight-address
+          = place.address
+        = image_tag "#{place.wall_image}", class: 'wall-image'
 
     - else
       .places-intro
