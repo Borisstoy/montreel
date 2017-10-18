@@ -3,7 +3,6 @@
     background: transparent
     position: absolute
     width: 100%
-    width: 400px
     margin: 0 auto
     margin-top: -100%
     +flexbox
@@ -18,21 +17,47 @@
         -webkit-box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4)
         -moz-box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4)
         box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.4)
+        min-width: 400px
 
         .contact-form
             height: 90%
+            font-size: .9em
 
-            .name-form
+            input, textarea
+                font-size: 1em
+
+            #contact_name, #contact_email
                 outline: none
                 border: 0
-                border-bottom: 1px solid lighten($dark, 60%)
+                border-bottom: 1px solid lighten(#000, 60%)
+                box-shadow: none
+                border-radius: 0
 
-            .email-form
+                &:focus
+                    border-bottom: 1px solid #000
+
+            #contact_content
+                border: 1px solid lighten(#000, 60%)
+                +border-radius
+                width: 100%
                 outline: none
-                border: 0
-                border-bottom: 1px solid lighten($dark, 60%)
+                padding: 6px 12px
+                height: 120px
 
-        .powered-wrapper
+                &:focus
+                    border: 1px solid #000
+
+            .contact-submit
+                width: 100%
+
+                #contact_sumbit
+                    background: #000
+                    border: none
+                    color: #fff
+                    +border-radius
+
+                    &:hover
+                        background: lighten(#000, 40%)
 
 
 #contactOverlay
