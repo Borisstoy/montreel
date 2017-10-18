@@ -31,13 +31,13 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'gmail.com',
-    user_name:            'boris.stoy@gmail.com',
-    password:             ENV['GMAIL_PSW'],
-    authentication:       :plain,
-    enable_starttls_auto: true
+    :address              => "smtp.sendgrid.net",
+    :port                 => 587,
+    :domain               => "rocket-mvp.herokuapp.com",
+    :user_name            => ENV['SENDGRID_USERNAME'],
+    :password             => ENV['SENDGRID_PASSWORD'],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
   }
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 

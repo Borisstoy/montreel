@@ -42,6 +42,7 @@ gem 'newrelic_rpm'
 # decorators
 gem 'draper'
 
+gem 'sendgrid-ruby'
 
 # active admin
 gem 'activeadmin', github: 'activeadmin/activeadmin'
