@@ -14,13 +14,13 @@ class ContactsController < ApplicationController
         format.js
         flash[:notice] = t('controllers.contacts.success')
         AdminNotificationMailer.new_contact_notification(@new_contact).deliver
-        format.html { redirect_back(fallback_location: root_path) }
+        # format.html { redirect_back(fallback_location: root_path) }
       else
         format.js { render :new }
-        format.html do
-          flash[:alert] = t('controllers.contacts.fail')
-          render :new
-        end
+        # format.html do
+        #   flash[:alert] = t('controllers.contacts.fail')
+        #   render :new
+        # end
       end
     end
   end
