@@ -3,16 +3,17 @@
   = f.input      :name,
                  label: false,
                  placeholder: I18n.t('contact.name'),
-                 required: true,
-                 class: 'name-form'
+                 require: true
 
   = f.input      :email,
                  label: false,
                  placeholder: I18n.t('contact.email'),
-                 required: true,
-                 class: 'email-form'
+                 required: true
 
   = f.text_area :content,
                 placeholder: I18n.t('contact.text_area')
 
-  = f.button :submit, I18n.t('contact.contact_submit')
+  .contact-submit
+    = f.button :submit, I18n.t('contact.contact_submit'),
+                        id: 'contact_sumbit'
+
