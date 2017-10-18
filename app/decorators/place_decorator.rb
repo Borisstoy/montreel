@@ -3,7 +3,7 @@ class PlaceDecorator < Draper::Decorator
 
   def truncate_description
     if description.present?
-      description.truncate(220, omission: '...')
+      description.truncate(190, omission: '...')
     end
   end
 
