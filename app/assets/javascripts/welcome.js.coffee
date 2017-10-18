@@ -54,3 +54,6 @@ $ ->
         specialEasing: width: 'smoothEasing'
 
         $('#welcome-overlay').removeClass 'transitioned-1s'
+
+$ ->
+  $('.alert').fadeOut(10000)
