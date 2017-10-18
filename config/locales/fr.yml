@@ -9,3 +9,12 @@ fr:
   all_categories: "Toutes les catégories"
   categories: "Catégories"
   click_to_enlarge: "Agrandir"
+
+  contact:
+    name: "Votre nom"
+    email: "Votre courriel"
+    text_area: "Votre message"
+    contact_submit: "Envoyer"
+
+  nav:
+    contact: "Contact"
