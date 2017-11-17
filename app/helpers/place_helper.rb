@@ -36,8 +36,10 @@ module PlaceHelper
   def places_results_header(kind)
     kinds_collection.select do |csv_kind, real_kind|
       csv_kind = csv_kind.to_s
-      if kind.start_with?(csv_kind) && kind.end_with?(csv_kind)
-        return real_kind
+      unless csv_kind.nil?
+        if kind.start_with?(csv_kind) && kind.end_with?(csv_kind)
+          return real_kind
+        end
       end
     end
   end
