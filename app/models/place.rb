@@ -9,7 +9,7 @@ class Place < ApplicationRecord
   accepts_nested_attributes_for :wall_summary
 
   scope :find_by_kind, -> (kind) { where(kind: kind).order('name ASC') }
-  scope :monument_by_category, -> (category) { joins(:monument_summary).where(kind: 'Monument')
-                                                                       .where(monument_summaries: {sub_category_fr:  category})
-                                                                       .order('name ASC')}
+  scope :monument_by_category, -> (category) { where(kind: 'Monument')
+                                               .where(sub_category_fr: category)
+                                               .order('name ASC')}
 end

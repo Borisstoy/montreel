@@ -1,5 +1,5 @@
 .iw-content-wrapper data={'place_kind': "#{place.kind}",
-                          'monument_sub_category': "#{place.sub_cat_fra}",
+                          'monument_sub_category': "#{place.sub_category_fr}",
                           'id': "#{place.id}"}
 
   h4.iw-title
@@ -14,24 +14,24 @@
         = place.address
         = place.location
       hr
-      span= place.category
+      span= place.category_fr
       br
-      span= place.sub_cat_fra
+      span= place.sub_category_fr
       br
-      span= place.tech_fr
+      span= place.techo_fr
 
     - elsif is_wall?(place)
       h5= place.wall_artist
       span class='iw-location'
         = place.address
         br
-        = "Organisation: #{place.wall_organisation}"
+        = "Organisation: #{place.organisation}"
         hr
-        - if place.wall_program.present?
-          = "Program: #{place.wall_program}"
+        - if place.program.present?
+          = "Program: #{place.program}"
 
       .iw-picture
-        = image_tag "#{place.wall_image}", class: 'wall-image'
+        = image_tag "#{place.image}", class: 'wall-image'
 
     - else
       span= place_contact(place)

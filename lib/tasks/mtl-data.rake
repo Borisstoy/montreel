@@ -54,12 +54,6 @@ namespace :mtl_data do
     require 'net/http'
     require 'json'
 
-    puts "Destroying all monuments summaries"
-    MonumentSummary.destroy_all
-
-    puts "Dumping & Reseting Monuments summaries table IDs"
-    ActiveRecord::Base.connection.reset_pk_sequence!('monument_summaries')
-
     puts "API call: Monuments"
 
     url = 'http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json'
@@ -71,6 +65,7 @@ namespace :mtl_data do
     puts "-------------------------"
 
     JSON.parse(response).each do |monu|
+
       params = {
         place: {
           borough: monu["Arrondissement"],
@@ -79,22 +74,20 @@ namespace :mtl_data do
           lng: monu["CoordonneeLongitude"],
           lat: monu["CoordonneeLatitude"],
           address: monu["AdresseCivique"],
-          monument_summary_attributes: {
-            collection_name_fr: monu["NomCollection"],
-            collection_name_en: monu["NomCollectionAng"],
-            category_fr: monu["CategorieObjet"],
-            category_en: monu["CategorieObjetAng"],
-            sub_category_fr: monu["SousCategorieObjet"],
-            sub_category_en: monu["SousCategorieObjetAng"],
-            materials_fr: monu["Materiaux"],
-            materials_en: monu["MateriauxAng"],
-            tech_fr: monu["Technique"],
-            tech_en: monu["TechniqueAng"],
-            park: monu["Parc"],
-            building: monu["Batiment"],
-            artist_name: monu["Artistes"][0]["Prenom"],
-            artist_last_name: monu["Artistes"][0]["Nom"]
-          }
+          collection_name_fr: monu["NomCollection"],
+          collection_name_en: monu["NomCollectionAng"],
+          category_fr: monu["CategorieObjet"],
+          category_en: monu["CategorieObjetAng"],
+          sub_category_fr: monu["SousCategorieObjet"],
+          sub_category_en: monu["SousCategorieObjetAng"],
+          materials_fr: monu["Materiaux"],
+          materials_en: monu["MateriauxAng"],
+          tech_fr: monu["Technique"],
+          tech_en: monu["TechniqueAng"],
+          park: monu["Parc"],
+          building: monu["Batiment"],
+          artist_name: monu["Artistes"][0]["Prenom"],
+          artist_last_name: monu["Artistes"][0]["Nom"]
         }
       }
 
@@ -111,12 +104,6 @@ namespace :mtl_data do
   task import_walls: :environment do
     require 'net/http'
     require 'json'
-
-    puts "Destroying all walls summaries"
-    WallSummary.destroy_all
-
-    puts "Dumping & Reseting Walls summaries table IDs"
-    ActiveRecord::Base.connection.reset_pk_sequence!('wall_summaries')
 
     puts "API call: Walls"
 
@@ -135,13 +122,11 @@ namespace :mtl_data do
           lng: wall["properties"]["longitude"],
           lat: wall["properties"]["latitude"],
           address: wall["properties"]["adresse"],
-          wall_summary_attributes: {
-            type: wall["properties"]["type"],
-            artist: wall["properties"]["artiste"],
-            organisation: wall["properties"]["organisation"],
-            program: wall["properties"]["program"],
-            image: wall["properties"]["image"]
-          }
+          type: wall["properties"]["type"],
+          artist: wall["properties"]["artiste"],
+          organisation: wall["properties"]["organisation"],
+          program: wall["properties"]["program"],
+          image: wall["properties"]["image"]
         }
       }
 
