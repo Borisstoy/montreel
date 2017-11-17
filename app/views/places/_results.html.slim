@@ -21,13 +21,13 @@
       .monument-breadcrumb
         - if is_monument?(place)
           p class="collection"
-            = place.collection_name
+            = place.collection_name_fr
           p class="category"
-            = place.category
+            = place.category_fr
           p class="sub_cat"
-            = place.sub_cat_fra
+            = place.sub_category_fr
           p class="tech"
-            = place.tech_fr
+            = place.techo_fr
 
     - elsif is_wall?(place)
       .wall-intro
@@ -36,14 +36,14 @@
           p class='borough'
             = place.address
             br
-            = "Organisation: #{place.wall_organisation}"
+            = "Organisation: #{place.organisation}"
             br
-            - if place.wall_program.present?
-              = "Program: #{place.wall_program}"
+            - if place.program.present?
+              = "Program: #{place.program}"
 
         .picture
           .wall-image-container data={'place-id': "#{place.id}"}
-            = image_tag "#{place.wall_image}", class: 'wall-image', data: {'image-id': "#{place.id}"}
+            = image_tag "#{place.image}", class: 'wall-image', data: {'image-id': "#{place.id}"}
           .wall-image-infobox data={'infobox-id': "#{place.id}"}
             span= t('click_to_enlarge')
           .spinner.img-loader
@@ -56,7 +56,7 @@
           = place.wall_artist
         span.higlight-address
           = place.address
-        = image_tag "#{place.wall_image}", class: 'wall-image'
+        = image_tag "#{place.image}", class: 'wall-image'
 
     - else
       .places-intro
