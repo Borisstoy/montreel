@@ -1,0 +1,63 @@
+.contact-intro
+    margin: 3% 0
+
+#contact-form-wrapper
+    height: 100vh
+    +flexbox
+    +alignitems-center
+
+    @media screen and (max-width: $screen-md)
+        height: auto
+
+    .contact-logo
+        max-width: 90px
+        margin: 4% 0
+
+    .contact-header
+        +flexbox
+        +justifycontent-spacebetween
+        +alignitems-center
+
+        .back-to-map
+            font-size: .7em
+            text-transform: uppercase
+            font-weight: 700
+            color: #000
+            white-space: nowrap
+
+            &:before
+                font-family: FontAwesome
+                content: '\f104'
+                margin-right: 5%
+
+            &:hover
+                text-decoration: none
+                color: lighten(#000, 50%)
+
+    .contact-form
+        #contact_name, #contact_email
+            border: 0
+            border-bottom: 1px solid lighten(#000, 70%)
+            outline: none
+            box-shadow: none
+            border-radius: 0
+
+            &:focus
+                border-bottom: 1px solid #000
+
+        textarea
+            width: 100%
+            outline: none
+            border: 1px solid lighten(#000, 70%)
+            padding: .8em
+            min-height: 150px
+
+        #contact_submit
+            background: #000
+            color: #fff
+            +border-radius
+            border: 0
+            +border-radius
+
+            &:focus, &:hover
+                background: lighten(#000, 20%)

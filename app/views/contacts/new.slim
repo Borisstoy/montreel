@@ -1,3 +1,9 @@
 #contact-form-wrapper
-  .contact-form
-    = render 'form', new_contact: @new_contact
+  .container
+    .col-xs-12.col-md-6.col-md-offset-3
+      .contact-header
+        = link_to places_path do
+          = image_tag 'logo-montreel.svg', class: 'contact-logo'
+        = link_to 'Retour à la carte', places_path, class: 'back-to-map'
+      .contact-form
+        = render 'form', new_contact: @new_contact

@@ -1,3 +1,5 @@
+p.contact-intro= "Des questions ou pistes d'améliorations? C'est ici."
+
 = simple_form_for new_contact, html: { class: 'contact-form' }  do |f|
 
   = f.input      :name,
@@ -15,5 +17,5 @@
 
   .contact-submit
     = f.button :submit, I18n.t('contact.contact_submit'),
-                        id: 'contact_sumbit'
+                        id: 'contact_submit'
 
